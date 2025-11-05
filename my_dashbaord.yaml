@@ -62,20 +62,11 @@ views:
               columns: 4
               rows: 3
           - type: button
-            name: Patio
-            icon: mdi:patio-heater
+            name: Patio & Entrance
+            icon: mdi:door-open
             tap_action:
               action: navigate
-              navigation_path: /my-dashboard/patio
-            grid_options:
-              columns: 4
-              rows: 3
-          - type: button
-            name: Entrance
-            icon: mdi:door
-            tap_action:
-              action: navigate
-              navigation_path: /my-dashboard/entrance
+              navigation_path: /my-dashboard/patio-entrance
             grid_options:
               columns: 4
               rows: 3

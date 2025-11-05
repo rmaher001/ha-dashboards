@@ -1,0 +1,16 @@
+# Backup files
+*.backup
+*.bak
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor directories
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*~

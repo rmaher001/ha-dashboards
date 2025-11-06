@@ -468,6 +468,71 @@ views:
         entity: sensor.patio_temp_humidity_sensor_humidity
         name: Outside Humidity
   - type: sections
+    title: Zoe's Bedroom
+    path: zoe-bedroom
+    icon: mdi:bed
+    max_columns: 2
+    sections:
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: light.zoe_bedroom_main_lights
+                name: Main Lights
+                secondary_info: last-changed
+              - entity: light.christmas_tree_zoe_outlet
+                secondary_info: last-changed
+                name: Christmas Tree
+              - entity: binary_sensor.zoe_bedroom_presence_sensors
+                secondary_info: last-changed
+                name: Presence
+                icon: mdi:home
+              - entity: sensor.zoe_bedroom_presence_2_co2
+                name: CO2
+                secondary_info: last-changed
+              - entity: sensor.zoe_bedroom_temp_humidity_temperature
+                name: Temperature
+                secondary_info: last-changed
+              - entity: sensor.zoe_bedroom_temp_humidity_humidity
+                secondary_info: last-changed
+                name: Humidity
+              - entity: sensor.zoe_bedroom_presence_2_ltr390_light
+                secondary_info: last-changed
+                name: Illuminance
+              - entity: timer.zoe_bedroom_lights_timer
+                name: Lights Timer
+                secondary_info: last-changed
+              - entity: binary_sensor.zoe_bedroom_window_contact_sensor_contact
+                name: Window
+                secondary_info: last-changed
+            title: Zoe's Bedroom
+            state_color: true
+    badges:
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content:
+          - state
+          - temperature
+          - humidity
+          - uv_index
+          - wind_speed
+        show_entity_picture: true
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_temperature
+        name: Outside Temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_humidity
+        name: Outside Humidity
+  - type: sections
     cards: []
     title: Entry
     icon: mdi:door

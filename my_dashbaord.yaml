@@ -681,6 +681,91 @@ views:
         entity: sensor.patio_temp_humidity_sensor_humidity
         name: Outside Humidity
   - type: sections
+    title: Patio & Entrance
+    path: patio-entrance
+    icon: mdi:door-open
+    max_columns: 2
+    sections:
+      - type: grid
+        title: Patio
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.patio_bistro_lights_2
+                secondary_info: last-changed
+                name: Bistro Lights
+              - entity: switch.patio_christmas_lights_2
+                name: Patio Christmas Lights
+                secondary_info: last-changed
+              - entity: light.patio_camera_floodlight_timed
+                name: Patio Camera Floodlight
+                secondary_info: last-changed
+              - entity: sensor.patio_temp_humidity_sensor_temperature
+                name: Temperature
+                secondary_info: last-changed
+              - entity: sensor.patio_temp_humidity_sensor_humidity
+                name: Humidity
+                secondary_info: last-changed
+            title: Patio
+            state_color: true
+      - type: grid
+        title: Entrance
+        cards:
+          - type: entities
+            entities:
+              - entity: light.front_porch_sconces
+                secondary_info: last-changed
+              - entity: light.entrance_overhead_light
+                secondary_info: last-changed
+              - entity: lock.front_door_lock
+                secondary_info: last-changed
+              - entity: binary_sensor.front_door_lock_low_battery_level
+                secondary_info: last-changed
+              - entity: sensor.front_door_lock_battery_level
+                secondary_info: last-changed
+              - entity: sensor.entrance_temp_humidity_temperature
+                secondary_info: last-changed
+                name: Temperature
+              - entity: sensor.entrance_temp_humidity_humidity
+                secondary_info: last-changed
+                name: Humidity
+              - entity: light.front_side_camera_floodlight_timed
+                name: Front Side Camera Floodlight
+                secondary_info: last-changed
+              - entity: light.sidewalk_street_camera_illuminator
+                secondary_info: last-changed
+              - entity: light.front_full_camera_illuminator
+                secondary_info: last-changed
+              - entity: sensor.doorbell_cpu_usage
+                secondary_info: last-changed
+            title: Entrance
+            state_color: true
+    badges:
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content:
+          - state
+          - temperature
+          - humidity
+          - uv_index
+          - wind_speed
+        show_entity_picture: true
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_temperature
+        name: Outside Temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_humidity
+        name: Outside Humidity
+  - type: sections
     cards: []
     title: Entry
     icon: mdi:door

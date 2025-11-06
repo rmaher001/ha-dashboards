@@ -1401,6 +1401,145 @@ views:
         entity: sensor.patio_temp_humidity_sensor_humidity
         name: Outside Humidity
   - type: sections
+    title: Entry & Security
+    path: entry-security
+    icon: mdi:shield-lock
+    max_columns: 2
+    sections:
+      - type: grid
+        title: Access Control
+        cards:
+          - type: button
+            entity: cover.group_garage_door_opener_door
+            name: Garage Door
+            show_state: true
+            icon: mdi:garage
+            tap_action:
+              action: toggle
+              confirmation:
+                text: Open/close garage door?
+          - type: button
+            entity: lock.front_door_lock
+            name: Front Door
+            show_state: true
+            icon: mdi:door
+            tap_action:
+              action: toggle
+              confirmation:
+                text: Lock/unlock front door?
+          - type: entities
+            entities:
+              - entity: binary_sensor.front_door_group_contact_sensor
+                name: Front Door
+                secondary_info: last-changed
+              - entity: binary_sensor.kitchen_door_group_contact_sensor
+                name: Kitchen Door
+                secondary_info: last-changed
+              - entity: binary_sensor.patio_door_contact_sensor_contact
+                name: Patio Door
+                secondary_info: last-changed
+              - entity: binary_sensor.zoe_bedroom_window_contact_sensor_contact
+                name: Zoe Window
+                secondary_info: last-changed
+                icon: mdi:window-closed
+              - entity: binary_sensor.master_bedroom_window_contact_sensor_contact
+                name: Master Bedroom Window
+                secondary_info: last-changed
+                icon: mdi:window-closed
+            title: Sensors
+            state_color: true
+      - type: grid
+        title: Security System
+        cards:
+          - type: markdown
+            content: >
+              # 🛡️ Security System
+
+              {% if states('input_select.home_security_mode') == 'Home' %}
+
+              ## 🟢 HOME MODE (ACTIVE)
+
+              _IVS monitoring only - normal daily life_
+
+              {% elif states('input_select.home_security_mode') == 'Away' %}
+
+              ## 🔴 AWAY MODE (ACTIVE)
+
+              _Full lockdown - all sensors monitored_
+
+              {% else %}
+
+              **Current Mode:** {{ states('input_select.home_security_mode')
+              }}
+
+              {% endif %}
+          - type: horizontal-stack
+            cards:
+              - type: button
+                entity: input_select.home_security_mode
+                name: Set Home Mode
+                icon: mdi:shield-home
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.home_security_mode
+                    option: Home
+              - type: button
+                entity: input_select.home_security_mode
+                name: Arm Away Mode
+                icon: mdi:shield-lock
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.home_security_mode
+                    option: Away
+          - type: entities
+            title: System Status
+            entities:
+              - entity: input_datetime.home_security_last_analysis
+                name: Last Analysis
+              - entity: input_boolean.home_security_audio_alerts
+                name: Audio Alerts
+            state_color: true
+          - type: entities
+            title: Settings
+            entities:
+              - entity: input_number.home_security_tts_volume
+                name: Alert Volume
+              - entity: input_number.home_security_confidence_threshold
+                name: Confidence Threshold
+              - entity: input_number.home_security_warning_rate_limit
+                name: Warning Rate Limit
+    badges:
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content:
+          - state
+          - temperature
+          - humidity
+          - uv_index
+          - wind_speed
+        show_entity_picture: true
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_temperature
+        name: Outside Temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_humidity
+        name: Outside Humidity
+  - type: sections
     cards: []
     title: Entry
     icon: mdi:door

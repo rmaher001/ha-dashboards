@@ -144,7 +144,7 @@ views:
     title: Kitchen & Living Room
     path: kitchen-living
     icon: mdi:countertop
-    max_columns: 2
+    max_columns: 1
     sections:
       # SECTION 1: KITCHEN LIGHTS
       - type: grid

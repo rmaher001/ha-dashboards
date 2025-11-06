@@ -412,6 +412,62 @@ views:
         entity: sensor.patio_temp_humidity_sensor_humidity
         name: Outside Humidity
   - type: sections
+    title: Dima's Bedroom
+    path: dima-bedroom
+    icon: mdi:bed
+    max_columns: 2
+    sections:
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: light.dima_bedroom_main_lights
+                secondary_info: last-changed
+                name: Main Lights
+              - entity: binary_sensor.dima_bedroom_presence_radar_target
+                name: Presence
+                secondary_info: last-changed
+                icon: mdi:home
+              - entity: sensor.dima_bedroom_presence_co2
+                name: CO2
+                secondary_info: last-changed
+              - entity: sensor.dima_bedroom_presence_ltr390_light
+                secondary_info: last-changed
+                name: Illuminance
+              - entity: sensor.dima_bedroom_presence_dps310_temperature
+                name: Temperature
+                secondary_info: last-changed
+              - entity: timer.dima_bedroom_lights_timer
+                name: Lights Timer
+                secondary_info: last-changed
+            title: Dima's Bedroom
+            state_color: true
+    badges:
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content:
+          - state
+          - temperature
+          - humidity
+          - uv_index
+          - wind_speed
+        show_entity_picture: true
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_temperature
+        name: Outside Temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_humidity
+        name: Outside Humidity
+  - type: sections
     cards: []
     title: Entry
     icon: mdi:door

@@ -2137,42 +2137,18 @@ views:
       - type: grid
         title: Security System
         cards:
-          - type: grid
-            columns: 3
-            square: false
-            cards:
-              - type: tile
-                entity: input_select.home_security_mode
-                name: Current Mode
-                icon: mdi:shield-check
-                color: >-
-                  {% if is_state('input_select.home_security_mode', 'Away') %}
-                  red
-                  {% else %}
-                  green
-                  {% endif %}
-              - type: tile
-                entity: input_select.home_security_mode
-                name: Home Mode
-                icon: mdi:shield-home
-                tap_action:
-                  action: call-service
-                  service: input_select.select_option
-                  service_data:
-                    entity_id: input_select.home_security_mode
-                    option: Home
-                color: green
-              - type: tile
-                entity: input_select.home_security_mode
-                name: Away Mode
-                icon: mdi:shield-lock
-                tap_action:
-                  action: call-service
-                  service: input_select.select_option
-                  service_data:
-                    entity_id: input_select.home_security_mode
-                    option: Away
-                color: red
+          - type: tile
+            entity: input_select.home_security_mode
+            name: Security Mode
+            icon: mdi:shield-home
+            color: >-
+              {% if is_state('input_select.home_security_mode', 'Away') %}
+              red
+              {% else %}
+              green
+              {% endif %}
+            features:
+              - type: select-options
           - type: entities
             show_header_toggle: false
             state_color: true

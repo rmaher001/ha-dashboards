@@ -486,16 +486,6 @@ views:
                       states('input_datetime.livingroom_kitchen_button_pressed_timestamp')
                       | as_timestamp) / 60) | round(0) %} {% if t < 0 %} 0 {% else
                       %} {{ t }} {% endif %} minutes
-
-    badges:
-      - type: entity
-        entity: weather.forecast_home
-        name: Weather
-        show_state: true
-      - type: entity
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside
-        show_state: true
   - type: sections
     title: Master Suite
     path: master-suite
@@ -861,16 +851,6 @@ views:
               - entity: remote.tv
                 name: TV Remote
                 secondary_info: last-changed
-
-    badges:
-      - type: entity
-        entity: weather.forecast_home
-        name: Weather
-        show_state: true
-      - type: entity
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside
-        show_state: true
   - type: sections
     title: Dima's Bedroom
     path: dima-bedroom
@@ -959,16 +939,6 @@ views:
                 name: Lights Timer
                 secondary_info: last-changed
                 icon: mdi:timer
-
-    badges:
-      - type: entity
-        entity: weather.forecast_home
-        name: Weather
-        show_state: true
-      - type: entity
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside
-        show_state: true
   - type: sections
     title: Zoe's Bedroom
     path: zoe-bedroom
@@ -1101,16 +1071,6 @@ views:
                 name: Lights Timer
                 secondary_info: last-changed
                 icon: mdi:timer
-
-    badges:
-      - type: entity
-        entity: weather.forecast_home
-        name: Weather
-        show_state: true
-      - type: entity
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside
-        show_state: true
   - type: sections
     title: Upstairs Bathroom
     path: upstairs-bathroom
@@ -1244,16 +1204,6 @@ views:
                 name: Vanity Moisture
                 secondary_info: last-changed
                 icon: mdi:water-alert
-
-    badges:
-      - type: entity
-        entity: weather.forecast_home
-        name: Weather
-        show_state: true
-      - type: entity
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside
-        show_state: true
   - type: sections
     title: Garage
     path: garage
@@ -1382,16 +1332,6 @@ views:
                 name: Water Heater Moisture
                 secondary_info: last-changed
                 icon: mdi:water-alert
-
-    badges:
-      - type: entity
-        entity: weather.forecast_home
-        name: Weather
-        show_state: true
-      - type: entity
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside
-        show_state: true
   - type: sections
     title: Patio & Entrance
     path: patio-entrance
@@ -1597,16 +1537,6 @@ views:
               - entity: sensor.doorbell_cpu_usage
                 secondary_info: last-changed
                 icon: mdi:chip
-
-    badges:
-      - type: entity
-        entity: weather.forecast_home
-        name: Weather
-        show_state: true
-      - type: entity
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside
-        show_state: true
   - type: sections
     max_columns: 2
     title: Climate Control
@@ -1627,52 +1557,6 @@ views:
             features:
               - style: icons
                 type: climate-hvac-modes
-    badges:
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: weather.forecast_home
-        name: Forecast
-        state_content:
-          - state
-          - temperature
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Patio Temp
-        state_content:
-          - state
-        display_precision: 1
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Patio Humidity
-        state_content:
-          - state
-        display_precision: 0
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
   - type: sections
     title: Appliances
     path: appliances
@@ -1999,31 +1883,6 @@ views:
                 name: Fridge
               - entity: sensor.kitchen_freezer_temp_humidity_temperature
                 name: Freezer
-    badges:
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: weather.forecast_home
-        state_content:
-          - state
-          - temperature
-          - humidity
-          - uv_index
-          - wind_speed
-        show_entity_picture: true
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside Temperature
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Outside Humidity
   - type: sections
     title: Plants
     path: plants
@@ -2089,31 +1948,6 @@ views:
               - conductivity
               - illuminance
             display_type: full
-    badges:
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: weather.forecast_home
-        state_content:
-          - state
-          - temperature
-          - humidity
-          - uv_index
-          - wind_speed
-        show_entity_picture: true
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside Temperature
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Outside Humidity
   - type: sections
     title: Water Softener
     path: water-softener
@@ -2246,31 +2080,6 @@ views:
               - entity: input_datetime.water_softener_last_notification
                 name: Last Alert
                 icon: mdi:bell-alert
-    badges:
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: weather.forecast_home
-        state_content:
-          - state
-          - temperature
-          - humidity
-          - uv_index
-          - wind_speed
-        show_entity_picture: true
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside Temperature
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Outside Humidity
   - type: sections
     title: Entry & Security
     path: entry-security
@@ -2387,50 +2196,4 @@ views:
                 name: Confidence Threshold
               - entity: input_number.home_security_warning_rate_limit
                 name: Warning Rate Limit
-    badges:
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: weather.forecast_home
-        name: Forecast
-        state_content:
-          - state
-          - temperature
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Patio Temp
-        state_content:
-          - state
-        display_precision: 1
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Patio Humidity
-        state_content:
-          - state
-        display_precision: 0
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
 

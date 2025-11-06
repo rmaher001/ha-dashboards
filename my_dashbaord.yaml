@@ -2162,12 +2162,8 @@ views:
                 icon: mdi:clock-check
                 tap_action:
                   action: none
-              - entity: input_boolean.home_security_siren_alerts
-                name: Siren Alerts
-                icon: mdi:bullhorn
               - entity: input_boolean.home_security_audio_alerts
-                name: Audio Alerts (TTS)
-                icon: mdi:volume-high
+                name: Audio Alerts
           - type: entities
             title: Advanced Settings
             show_header_toggle: false

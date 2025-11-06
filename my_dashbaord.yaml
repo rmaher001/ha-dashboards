@@ -474,6 +474,12 @@ views:
         state_content:
           - state
           - temperature
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
@@ -482,6 +488,13 @@ views:
         name: Patio Temp
         state_content:
           - state
+        display_precision: 1
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
@@ -490,6 +503,13 @@ views:
         name: Patio Humidity
         state_content:
           - state
+        display_precision: 0
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
   - type: sections
     title: Master Suite
     path: master-suite

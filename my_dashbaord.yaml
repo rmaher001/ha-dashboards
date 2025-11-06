@@ -167,6 +167,23 @@ views:
     icon: mdi:countertop
     max_columns: 1
     sections:
+      # ROOM HEADER
+      - type: grid
+        cards:
+          - type: markdown
+            content: |
+              # 🍳 Kitchen & Living Room
+            card_mod:
+              style: |
+                ha-card {
+                  background: none;
+                  box-shadow: none;
+                  text-align: center;
+                  font-size: 1.5em;
+                }
+                ha-markdown {
+                  padding: 0 !important;
+                }
       # SECTION 1: KITCHEN LIGHTS
       - type: grid
         title: Kitchen Lights
@@ -537,6 +554,23 @@ views:
     icon: mdi:bed-king
     max_columns: 1
     sections:
+      # ROOM HEADER
+      - type: grid
+        cards:
+          - type: markdown
+            content: |
+              # 🛏️ Master Suite
+            card_mod:
+              style: |
+                ha-card {
+                  background: none;
+                  box-shadow: none;
+                  text-align: center;
+                  font-size: 1.5em;
+                }
+                ha-markdown {
+                  padding: 0 !important;
+                }
       # SECTION 1: BEDROOM LIGHTS
       - type: grid
         title: Bedroom Lights
@@ -947,6 +981,23 @@ views:
     icon: mdi:bed
     max_columns: 1
     sections:
+      # ROOM HEADER
+      - type: grid
+        cards:
+          - type: markdown
+            content: |
+              # 🛌 Dima's Bedroom
+            card_mod:
+              style: |
+                ha-card {
+                  background: none;
+                  box-shadow: none;
+                  text-align: center;
+                  font-size: 1.5em;
+                }
+                ha-markdown {
+                  padding: 0 !important;
+                }
       # SECTION 1: LIGHTS
       - type: grid
         title: Lights
@@ -1080,6 +1131,23 @@ views:
     icon: mdi:bed
     max_columns: 1
     sections:
+      # ROOM HEADER
+      - type: grid
+        cards:
+          - type: markdown
+            content: |
+              # 🛌 Zoe's Bedroom
+            card_mod:
+              style: |
+                ha-card {
+                  background: none;
+                  box-shadow: none;
+                  text-align: center;
+                  font-size: 1.5em;
+                }
+                ha-markdown {
+                  padding: 0 !important;
+                }
       # SECTION 1: LIGHTS
       - type: grid
         title: Lights
@@ -1257,6 +1325,23 @@ views:
     icon: mdi:shower
     max_columns: 1
     sections:
+      # ROOM HEADER
+      - type: grid
+        cards:
+          - type: markdown
+            content: |
+              # 🚿 Upstairs Bathroom
+            card_mod:
+              style: |
+                ha-card {
+                  background: none;
+                  box-shadow: none;
+                  text-align: center;
+                  font-size: 1.5em;
+                }
+                ha-markdown {
+                  padding: 0 !important;
+                }
       # SECTION 1: BATHROOM
       - type: grid
         title: Bathroom
@@ -1435,6 +1520,23 @@ views:
     icon: mdi:garage
     max_columns: 1
     sections:
+      # ROOM HEADER
+      - type: grid
+        cards:
+          - type: markdown
+            content: |
+              # 🚗 Garage
+            card_mod:
+              style: |
+                ha-card {
+                  background: none;
+                  box-shadow: none;
+                  text-align: center;
+                  font-size: 1.5em;
+                }
+                ha-markdown {
+                  padding: 0 !important;
+                }
       # SECTION 1: GARAGE DOOR
       - type: grid
         title: Garage Door
@@ -1608,6 +1710,23 @@ views:
     icon: mdi:door-open
     max_columns: 1
     sections:
+      # ROOM HEADER
+      - type: grid
+        cards:
+          - type: markdown
+            content: |
+              # 🚪 Patio & Entrance
+            card_mod:
+              style: |
+                ha-card {
+                  background: none;
+                  box-shadow: none;
+                  text-align: center;
+                  font-size: 1.5em;
+                }
+                ha-markdown {
+                  padding: 0 !important;
+                }
       # SECTION 1: PATIO LIGHTS
       - type: grid
         title: Patio Lights
@@ -1776,26 +1895,6 @@ views:
               - type: tile
                 entity: sensor.patio_temp_humidity_sensor_humidity
                 name: Patio Humidity
-                icon: mdi:water-percent
-                color: blue
-                card_mod:
-                  style: |
-                    ha-card {
-                      background: rgba(255, 255, 255, 0.1);
-                    }
-              - type: tile
-                entity: sensor.entrance_temp_humidity_temperature
-                name: Entrance Temp
-                icon: mdi:thermometer
-                color: red
-                card_mod:
-                  style: |
-                    ha-card {
-                      background: rgba(255, 255, 255, 0.1);
-                    }
-              - type: tile
-                entity: sensor.entrance_temp_humidity_humidity
-                name: Entrance Humidity
                 icon: mdi:water-percent
                 color: blue
                 card_mod:

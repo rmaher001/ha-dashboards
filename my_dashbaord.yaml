@@ -144,57 +144,89 @@ views:
     title: Kitchen & Living Room
     path: kitchen-living
     icon: mdi:countertop
-    max_columns: 3
+    max_columns: 2
     sections:
       # SECTION 1: KITCHEN LIGHTS
       - type: grid
         title: Kitchen Lights
         cards:
           - type: grid
-            columns: 3
-            square: false
+            columns: 2
+            square: true
             cards:
               - type: tile
                 entity: light.kitchen_main_lights
                 name: Main Lights
                 icon: mdi:ceiling-light
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
               - type: tile
                 entity: light.kitchen_under_cabinet
                 name: Under Cabinet
                 icon: mdi:led-strip-variant
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
               - type: tile
                 entity: light.kitchen_pantry
                 name: Pantry
                 icon: mdi:door
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
 
       # SECTION 2: LIVING ROOM LIGHTS
       - type: grid
         title: Living Room Lights
         cards:
           - type: grid
-            columns: 3
-            square: false
+            columns: 2
+            square: true
             cards:
               - type: tile
                 entity: light.living_room_lamp
                 name: Lamp
                 icon: mdi:lamp
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
               - type: tile
                 entity: light.living_room_spot_lights
                 name: Spot Lights
                 icon: mdi:ceiling-light-multiple
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
               - type: tile
                 entity: light.living_room_presence_rgb_light
                 name: Night Light
                 icon: mdi:lightbulb-night
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
               - type: tile
                 entity: light.living_room_christmas_tree_outlet
                 name: Christmas Tree
                 icon: mdi:pine-tree
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
               - type: tile
                 entity: light.front_door_area
                 name: Front Door Area
                 icon: mdi:door
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
 
       # SECTION 3: STAIRS LIGHTS
       - type: grid
@@ -202,83 +234,83 @@ views:
         cards:
           - type: grid
             columns: 2
-            square: false
+            square: true
             cards:
               - type: tile
                 entity: light.stairs_spot_lights
                 name: Spot Lights
                 icon: mdi:ceiling-light
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
               - type: tile
                 entity: light.stairs_led_strip_2
                 name: LED Strip
                 icon: mdi:led-strip-variant
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
 
       # SECTION 4: CLIMATE
       - type: grid
         title: Climate & Environment
         cards:
           - type: grid
-            columns: 3
-            square: false
+            columns: 2
+            square: true
             cards:
-              # Kitchen Temperature
               - type: tile
                 entity: sensor.hue_motion_01_temperature
                 name: Kitchen Temp
                 icon: mdi:thermometer
                 color: red
-              # Living Room Temperature
               - type: tile
                 entity: sensor.living_room_presence_2_dps310_temperature
                 name: Living Room Temp
                 icon: mdi:thermometer
                 color: red
-              # Living Room CO2
               - type: tile
                 entity: sensor.living_room_presence_2_co2
                 name: CO2
                 icon: mdi:molecule-co2
                 color: green
-              # Living Room Illuminance
               - type: tile
                 entity: sensor.filtered_living_room_illuminance
                 name: Illuminance
                 icon: mdi:brightness-6
                 color: yellow
 
-      # SECTION 5: MEDIA
+      # SECTION 5: DOORS & WINDOWS
+      - type: grid
+        title: Doors & Windows
+        cards:
+          - type: grid
+            columns: 2
+            square: true
+            cards:
+              - type: tile
+                entity: binary_sensor.kitchen_door_contact_sensor_contact
+                name: Kitchen Door
+                icon: mdi:door
+                tap_action:
+                  action: more-info
+              - type: tile
+                entity: binary_sensor.patio_door_contact_sensor_contact
+                name: Patio Door
+                icon: mdi:door-sliding
+                tap_action:
+                  action: more-info
+
+      # SECTION 6: MEDIA
       - type: grid
         title: Media
         cards:
-          - type: custom:mini-media-player
+          - type: media-control
             entity: media_player.living_room_tv_2_4
-            name: Living Room TV
-            icon: mdi:television
-            artwork: cover
-            hide:
-              power_state: false
-              volume: false
-            shortcuts:
-              columns: 4
-              buttons:
-                - name: Netflix
-                  type: source
-                  id: Netflix
-                  icon: mdi:netflix
-                - name: YouTube
-                  type: source
-                  id: YouTube
-                  icon: mdi:youtube
-                - name: Disney+
-                  type: source
-                  id: Disney+
-                  icon: mdi:disney
-                - name: Plex
-                  type: source
-                  id: Plex
-                  icon: mdi:plex
 
-      # SECTION 6: MONITORING
+      # SECTION 7: MONITORING
       - type: grid
         title: Monitoring
         cards:
@@ -286,7 +318,6 @@ views:
             show_header_toggle: false
             state_color: true
             entities:
-              # Motion/Presence
               - entity: binary_sensor.hue_motion_01_motion
                 name: Kitchen Motion
                 secondary_info: last-changed
@@ -300,7 +331,6 @@ views:
                 secondary_info: last-changed
                 icon: mdi:motion-sensor
               - type: divider
-              # Moisture Sensors
               - entity: binary_sensor.kitchen_sink_moisture_sensor_water_leak
                 name: Kitchen Sink
                 secondary_info: last-changed
@@ -314,17 +344,6 @@ views:
                 secondary_info: last-changed
                 icon: mdi:water-alert
               - type: divider
-              # Doors
-              - entity: binary_sensor.kitchen_door_contact_sensor_contact
-                name: Kitchen Door
-                secondary_info: last-changed
-                icon: mdi:door
-              - entity: binary_sensor.patio_door_contact_sensor_contact
-                name: Patio Sliding Door
-                secondary_info: last-changed
-                icon: mdi:door-sliding
-              - type: divider
-              # Other
               - entity: remote.living_room_tv_2
                 name: TV Remote
                 secondary_info: last-changed

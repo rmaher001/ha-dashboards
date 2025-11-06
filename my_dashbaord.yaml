@@ -307,8 +307,33 @@ views:
       - type: grid
         title: Media
         cards:
-          - type: media-control
+          - type: custom:mini-media-player
             entity: media_player.living_room_tv_2_4
+            name: Living Room TV
+            icon: mdi:television
+            artwork: cover
+            hide:
+              power_state: false
+              volume: false
+            shortcuts:
+              columns: 4
+              buttons:
+                - name: Netflix
+                  type: source
+                  id: Netflix
+                  icon: mdi:netflix
+                - name: YouTube
+                  type: source
+                  id: YouTube
+                  icon: mdi:youtube
+                - name: Disney+
+                  type: source
+                  id: Disney+
+                  icon: mdi:disney
+                - name: Plex
+                  type: source
+                  id: Plex
+                  icon: mdi:plex
 
       # SECTION 7: MONITORING
       - type: grid
@@ -318,43 +343,50 @@ views:
             show_header_toggle: false
             state_color: true
             entities:
-              - entity: binary_sensor.hue_motion_01_motion
-                name: Kitchen Motion
-                secondary_info: last-changed
-                icon: mdi:motion-sensor
-              - entity: binary_sensor.living_room_presence_sensors
-                name: Living Room Presence
-                secondary_info: last-changed
-                icon: mdi:eye
-              - entity: binary_sensor.stairs_motion_sensors
-                name: Stairs Motion
-                secondary_info: last-changed
-                icon: mdi:motion-sensor
-              - type: divider
-              - entity: binary_sensor.kitchen_sink_moisture_sensor_water_leak
-                name: Kitchen Sink
-                secondary_info: last-changed
-                icon: mdi:water-alert
-              - entity: binary_sensor.kitchen_dishwasher_moisture_sensor_water_leak
-                name: Dishwasher
-                secondary_info: last-changed
-                icon: mdi:water-alert
-              - entity: binary_sensor.kitchen_refrigerator_moisture_sensor_water_leak
-                name: Refrigerator
-                secondary_info: last-changed
-                icon: mdi:water-alert
-              - type: divider
-              - entity: remote.living_room_tv_2
-                name: TV Remote
-                secondary_info: last-changed
-              - type: custom:template-entity-row
-                icon: mdi:timer
-                name: Button Timer Remaining
-                state: >-
-                  {% set t = (60 - (now().timestamp() -
-                  states('input_datetime.livingroom_kitchen_button_pressed_timestamp')
-                  | as_timestamp) / 60) | round(0) %} {% if t < 0 %} 0 {% else
-                  %} {{ t }} {% endif %} minutes
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: Sensors (tap to expand)
+                padding: 5
+                open: false
+                entities:
+                  - entity: binary_sensor.hue_motion_01_motion
+                    name: Kitchen Motion
+                    secondary_info: last-changed
+                    icon: mdi:motion-sensor
+                  - entity: binary_sensor.living_room_presence_sensors
+                    name: Living Room Presence
+                    secondary_info: last-changed
+                    icon: mdi:eye
+                  - entity: binary_sensor.stairs_motion_sensors
+                    name: Stairs Motion
+                    secondary_info: last-changed
+                    icon: mdi:motion-sensor
+                  - type: divider
+                  - entity: binary_sensor.kitchen_sink_moisture_sensor_water_leak
+                    name: Kitchen Sink
+                    secondary_info: last-changed
+                    icon: mdi:water-alert
+                  - entity: binary_sensor.kitchen_dishwasher_moisture_sensor_water_leak
+                    name: Dishwasher
+                    secondary_info: last-changed
+                    icon: mdi:water-alert
+                  - entity: binary_sensor.kitchen_refrigerator_moisture_sensor_water_leak
+                    name: Refrigerator
+                    secondary_info: last-changed
+                    icon: mdi:water-alert
+                  - type: divider
+                  - entity: remote.living_room_tv_2
+                    name: TV Remote
+                    secondary_info: last-changed
+                  - type: custom:template-entity-row
+                    icon: mdi:timer
+                    name: Button Timer Remaining
+                    state: >-
+                      {% set t = (60 - (now().timestamp() -
+                      states('input_datetime.livingroom_kitchen_button_pressed_timestamp')
+                      | as_timestamp) / 60) | round(0) %} {% if t < 0 %} 0 {% else
+                      %} {{ t }} {% endif %} minutes
 
     badges:
       - type: entity

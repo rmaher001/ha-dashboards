@@ -470,25 +470,26 @@ views:
         show_state: true
         show_icon: true
         entity: weather.forecast_home
+        name: Forecast
         state_content:
           - state
           - temperature
-          - humidity
-          - uv_index
-          - wind_speed
-        show_entity_picture: true
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside Temperature
+        name: Patio Temp
+        state_content:
+          - state
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Outside Humidity
+        name: Patio Humidity
+        state_content:
+          - state
   - type: sections
     title: Master Suite
     path: master-suite

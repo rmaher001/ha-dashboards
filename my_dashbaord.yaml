@@ -165,25 +165,10 @@ views:
     title: Kitchen & Living Room
     path: kitchen-living
     icon: mdi:countertop
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # ROOM HEADER
-      - type: grid
-        cards:
-          - type: markdown
-            content: |
-              # 🍳 Kitchen & Living Room
-            card_mod:
-              style: |
-                ha-card {
-                  background: none;
-                  box-shadow: none;
-                  text-align: center;
-                  font-size: 1.5em;
-                }
-                ha-markdown {
-                  padding: 0 !important;
-                }
       # SECTION 1: KITCHEN LIGHTS
       - type: grid
         title: Kitchen Lights
@@ -504,73 +489,21 @@ views:
 
     badges:
       - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
         entity: weather.forecast_home
-        name: Forecast
-        state_content:
-          - state
-          - temperature
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Weather
         show_state: true
-        show_icon: true
+      - type: entity
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Patio Temp
-        state_content:
-          - state
-        display_precision: 1
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Outside
         show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Patio Humidity
-        state_content:
-          - state
-        display_precision: 0
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
   - type: sections
     title: Master Suite
     path: master-suite
     icon: mdi:bed-king
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # ROOM HEADER
-      - type: grid
-        cards:
-          - type: markdown
-            content: |
-              # 🛏️ Master Suite
-            card_mod:
-              style: |
-                ha-card {
-                  background: none;
-                  box-shadow: none;
-                  text-align: center;
-                  font-size: 1.5em;
-                }
-                ha-markdown {
-                  padding: 0 !important;
-                }
       # SECTION 1: BEDROOM LIGHTS
       - type: grid
         title: Bedroom Lights
@@ -931,73 +864,21 @@ views:
 
     badges:
       - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
         entity: weather.forecast_home
-        name: Forecast
-        state_content:
-          - state
-          - temperature
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Weather
         show_state: true
-        show_icon: true
+      - type: entity
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Patio Temp
-        state_content:
-          - state
-        display_precision: 1
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Outside
         show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Patio Humidity
-        state_content:
-          - state
-        display_precision: 0
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
   - type: sections
     title: Dima's Bedroom
     path: dima-bedroom
     icon: mdi:bed
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # ROOM HEADER
-      - type: grid
-        cards:
-          - type: markdown
-            content: |
-              # 🛌 Dima's Bedroom
-            card_mod:
-              style: |
-                ha-card {
-                  background: none;
-                  box-shadow: none;
-                  text-align: center;
-                  font-size: 1.5em;
-                }
-                ha-markdown {
-                  padding: 0 !important;
-                }
       # SECTION 1: LIGHTS
       - type: grid
         title: Lights
@@ -1081,73 +962,21 @@ views:
 
     badges:
       - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
         entity: weather.forecast_home
-        name: Forecast
-        state_content:
-          - state
-          - temperature
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Weather
         show_state: true
-        show_icon: true
+      - type: entity
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Patio Temp
-        state_content:
-          - state
-        display_precision: 1
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Outside
         show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Patio Humidity
-        state_content:
-          - state
-        display_precision: 0
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
   - type: sections
     title: Zoe's Bedroom
     path: zoe-bedroom
     icon: mdi:bed
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # ROOM HEADER
-      - type: grid
-        cards:
-          - type: markdown
-            content: |
-              # 🛌 Zoe's Bedroom
-            card_mod:
-              style: |
-                ha-card {
-                  background: none;
-                  box-shadow: none;
-                  text-align: center;
-                  font-size: 1.5em;
-                }
-                ha-markdown {
-                  padding: 0 !important;
-                }
       # SECTION 1: LIGHTS
       - type: grid
         title: Lights
@@ -1275,73 +1104,21 @@ views:
 
     badges:
       - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
         entity: weather.forecast_home
-        name: Forecast
-        state_content:
-          - state
-          - temperature
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Weather
         show_state: true
-        show_icon: true
+      - type: entity
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Patio Temp
-        state_content:
-          - state
-        display_precision: 1
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Outside
         show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Patio Humidity
-        state_content:
-          - state
-        display_precision: 0
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
   - type: sections
     title: Upstairs Bathroom
     path: upstairs-bathroom
     icon: mdi:shower
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # ROOM HEADER
-      - type: grid
-        cards:
-          - type: markdown
-            content: |
-              # 🚿 Upstairs Bathroom
-            card_mod:
-              style: |
-                ha-card {
-                  background: none;
-                  box-shadow: none;
-                  text-align: center;
-                  font-size: 1.5em;
-                }
-                ha-markdown {
-                  padding: 0 !important;
-                }
       # SECTION 1: BATHROOM
       - type: grid
         title: Bathroom
@@ -1470,73 +1247,21 @@ views:
 
     badges:
       - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
         entity: weather.forecast_home
-        name: Forecast
-        state_content:
-          - state
-          - temperature
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Weather
         show_state: true
-        show_icon: true
+      - type: entity
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Patio Temp
-        state_content:
-          - state
-        display_precision: 1
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Outside
         show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Patio Humidity
-        state_content:
-          - state
-        display_precision: 0
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
   - type: sections
     title: Garage
     path: garage
     icon: mdi:garage
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # ROOM HEADER
-      - type: grid
-        cards:
-          - type: markdown
-            content: |
-              # 🚗 Garage
-            card_mod:
-              style: |
-                ha-card {
-                  background: none;
-                  box-shadow: none;
-                  text-align: center;
-                  font-size: 1.5em;
-                }
-                ha-markdown {
-                  padding: 0 !important;
-                }
       # SECTION 1: GARAGE DOOR
       - type: grid
         title: Garage Door
@@ -1660,73 +1385,21 @@ views:
 
     badges:
       - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
         entity: weather.forecast_home
-        name: Forecast
-        state_content:
-          - state
-          - temperature
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Weather
         show_state: true
-        show_icon: true
+      - type: entity
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Patio Temp
-        state_content:
-          - state
-        display_precision: 1
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Outside
         show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Patio Humidity
-        state_content:
-          - state
-        display_precision: 0
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
   - type: sections
     title: Patio & Entrance
     path: patio-entrance
     icon: mdi:door-open
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # ROOM HEADER
-      - type: grid
-        cards:
-          - type: markdown
-            content: |
-              # 🚪 Patio & Entrance
-            card_mod:
-              style: |
-                ha-card {
-                  background: none;
-                  box-shadow: none;
-                  text-align: center;
-                  font-size: 1.5em;
-                }
-                ha-markdown {
-                  padding: 0 !important;
-                }
       # SECTION 1: PATIO LIGHTS
       - type: grid
         title: Patio Lights
@@ -1927,55 +1600,20 @@ views:
 
     badges:
       - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
         entity: weather.forecast_home
-        name: Forecast
-        state_content:
-          - state
-          - temperature
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Weather
         show_state: true
-        show_icon: true
+      - type: entity
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Patio Temp
-        state_content:
-          - state
-        display_precision: 1
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
-      - type: entity
-        show_name: true
+        name: Outside
         show_state: true
-        show_icon: true
-        entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Patio Humidity
-        state_content:
-          - state
-        display_precision: 0
-        card_mod:
-          style: |
-            :host {
-              --ha-label-badge-size: 80px;
-              --ha-label-badge-font-size: 1.2em;
-            }
   - type: sections
     max_columns: 2
     title: Climate Control
     path: climate
     icon: mdi:hvac
+    subview: true
+    back_path: /my-dashboard/default_view
     sections:
       - type: grid
         cards:
@@ -2039,6 +1677,8 @@ views:
     title: Appliances
     path: appliances
     icon: mdi:washing-machine
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 2
     sections:
       - type: grid
@@ -2388,6 +2028,8 @@ views:
     title: Plants
     path: plants
     icon: mdi:flower
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 4
     sections:
       - type: grid
@@ -2476,6 +2118,8 @@ views:
     title: Water Softener
     path: water-softener
     icon: mdi:water
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 4
     sections:
       - type: grid
@@ -2631,6 +2275,8 @@ views:
     title: Entry & Security
     path: entry-security
     icon: mdi:shield-lock
+    subview: true
+    back_path: /my-dashboard/default_view
     max_columns: 2
     sections:
       - type: grid

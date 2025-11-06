@@ -272,6 +272,146 @@ views:
         entity: sensor.patio_temp_humidity_sensor_humidity
         name: Outside Humidity
   - type: sections
+    title: Master Suite
+    path: master-suite
+    icon: mdi:bed-king
+    max_columns: 3
+    sections:
+      - type: grid
+        title: Bedroom
+        cards:
+          - type: entities
+            entities:
+              - entity: light.master_bedroom_main_lights
+                name: Main Lights
+                secondary_info: last-changed
+                icon: mdi:ceiling-light-multiple
+              - entity: light.master_bedroom_bedside_lamps
+                secondary_info: last-changed
+                name: Bedside Lamps
+              - entity: light.master_bedroom_olesia_lamp
+                secondary_info: last-changed
+                name: Olesia Lamp
+              - entity: light.master_bedroom_richard_lamp
+                secondary_info: last-changed
+                name: Richard Lamp
+              - entity: light.master_bedroom_floor_lamp
+                name: Floor Lamp
+                secondary_info: last-changed
+              - entity: light.master_bedroom_under_bed_led_strip
+                secondary_info: last-changed
+                name: Under Bed Lights
+              - entity: light.dlight_01_slider
+                secondary_info: last-changed
+              - entity: light.master_bedroom_closet_area
+                name: Closet Area
+                secondary_info: last-changed
+              - entity: light.master_bedroom_vanity
+                secondary_info: last-changed
+                name: Vanity
+              - entity: light.master_bedroom_vanity_plus_closet
+                secondary_info: last-changed
+                name: Vanity + Closet
+              - entity: remote.tv
+                name: TV
+                secondary_info: last-changed
+              - entity: sensor.master_bedroom_illuminance_moving_average
+                name: Illuminance
+                secondary_info: last-changed
+              - entity: binary_sensor.master_bedroom_vanity_moisture_sensor_water_leak
+                name: Vanity Moisture
+                secondary_info: last-changed
+              - entity: binary_sensor.everything_presence_lite_5cd9e4_zone_1_occupancy
+                secondary_info: last-changed
+                name: Chair Occupancy
+                icon: mdi:home
+              - entity: binary_sensor.master_bedroom_presence_sensors
+                secondary_info: last-changed
+                name: Presence
+                icon: mdi:home
+              - entity: sensor.everything_presence_lite_5cd9e4_co2
+                secondary_info: last-changed
+                name: CO2
+              - entity: sensor.master_bedroom_temp_humidity_temperature
+                secondary_info: last-changed
+                name: Temperature
+              - entity: sensor.master_bedroom_temp_humidity_humidity
+                secondary_info: last-changed
+                name: Humidity
+              - entity: binary_sensor.master_bedroom_window_contact_sensor_contact
+                name: Window
+                secondary_info: last-changed
+            title: Master Bedroom
+            state_color: true
+          - type: media-control
+            entity: media_player.tv_2
+      - type: grid
+        title: Bathroom
+        cards:
+          - type: entities
+            entities:
+              - entity: sensor.master_bathroom_temp_humidity_2_temperature
+                secondary_info: last-changed
+                name: Temperature
+              - entity: sensor.master_bathroom_temp_humidity_2_humidity
+                name: Humidity
+                secondary_info: last-changed
+              - entity: sensor.master_bathroom_derivative_humidity
+                name: Derivative Humidity
+                secondary_info: last-changed
+              - entity: binary_sensor.master_bathroom_humidity_target
+                secondary_info: last-changed
+                name: Humidity Target
+              - entity: sensor.master_bathroom_presence_co2
+                secondary_info: last-changed
+                name: CO2
+              - entity: switch.master_bathroom_main_lights
+                secondary_info: last-changed
+                name: Main Lights
+              - entity: light.master_bathroom_presence_rgb_light
+                name: Night Light
+                secondary_info: last-changed
+              - entity: switch.master_bathroom_exhaust_fan
+                secondary_info: last-changed
+                name: Exhaust Fan
+              - entity: timer.master_bathroom_fan_timer
+                name: Fan Timer
+                secondary_info: last-changed
+              - entity: binary_sensor.master_bathroom_moisture_sensor_water_leak
+                name: Moisture
+                secondary_info: last-changed
+              - entity: binary_sensor.master_bathroom_motion_sensors
+                name: Presence
+                secondary_info: last-changed
+                icon: mdi:home
+            title: Master Bathroom
+            state_color: true
+    badges:
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content:
+          - state
+          - temperature
+          - humidity
+          - uv_index
+          - wind_speed
+        show_entity_picture: true
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_temperature
+        name: Outside Temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_humidity
+        name: Outside Humidity
+  - type: sections
     cards: []
     title: Entry
     icon: mdi:door

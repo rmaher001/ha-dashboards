@@ -2133,27 +2133,15 @@ views:
       - type: grid
         title: Security System
         cards:
-          - type: markdown
-            content: >
-              # 🛡️ Security System
-
-              {% if states('input_select.home_security_mode') == 'Home' %}
-
-              ## 🟢 HOME MODE (ACTIVE)
-
-              _IVS monitoring only - normal daily life_
-
-              {% elif states('input_select.home_security_mode') == 'Away' %}
-
-              ## 🔴 AWAY MODE (ACTIVE)
-
-              _Full lockdown - all sensors monitored_
-
+          - type: tile
+            entity: input_select.home_security_mode
+            name: Security Mode
+            icon: mdi:shield-home
+            color: >-
+              {% if is_state('input_select.home_security_mode', 'Away') %}
+              red
               {% else %}
-
-              **Current Mode:** {{ states('input_select.home_security_mode')
-              }}
-
+              green
               {% endif %}
           - type: horizontal-stack
             cards:

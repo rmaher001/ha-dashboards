@@ -1246,6 +1246,161 @@ views:
         entity: sensor.patio_temp_humidity_sensor_humidity
         name: Outside Humidity
   - type: sections
+    title: Water Softener
+    path: water-softener
+    icon: mdi:water
+    max_columns: 4
+    sections:
+      - type: grid
+        cards:
+          - type: entities
+            title: Water Softener Status
+            show_header_toggle: false
+            card_mod:
+              style: |
+                ha-card {
+                  font-size: 150%;
+                }
+            entities:
+              - entity: sensor.water_softener_salt_status
+                name: Status
+                icon: mdi:water-opacity
+              - entity: sensor.water_softener_salt_level
+                name: Salt Level
+                icon: mdi:percent
+          - type: gauge
+            entity: sensor.water_softener_salt_level
+            name: Salt Level
+            unit: '%'
+            needle: true
+            severity:
+              green: 60
+              yellow: 40
+              red: 0
+            segments:
+              - from: 0
+                color: '#ff0000'
+              - from: 20
+                color: '#ff6600'
+              - from: 40
+                color: '#ffd700'
+              - from: 60
+                color: '#00c853'
+          - type: markdown
+            content: >
+              🔴 <20% Critical | 🟠 20-40% Low | 🟡 40-60% Moderate | 🟢 60%+
+              Good
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.water_softener_sensor_out_of_range
+                state: 'on'
+            card:
+              type: custom:mushroom-template-card
+              primary: Sensor Error!
+              secondary: TOF sensor out of range - check for obstructions
+              icon: mdi:alert-circle
+              icon_color: red
+              fill_container: true
+              layout: horizontal
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Salt Level History (7 Days)
+              show_states: true
+              colorize_states: true
+            graph_span: 10d
+            yaxis:
+              - min: 0
+                max: 100
+                apex_config:
+                  tickAmount: 5
+                  labels:
+                    formatter: |
+                      EVAL:function(value) {
+                        return value.toFixed(0) + '%';
+                      }
+            apex_config:
+              chart:
+                height: 280px
+                zoom:
+                  enabled: true
+                  type: x
+                  autoScaleYaxis: true
+                toolbar:
+                  show: true
+                  tools:
+                    zoom: true
+                    zoomin: true
+                    zoomout: true
+                    pan: true
+                    reset: true
+              xaxis:
+                labels:
+                  datetimeUTC: false
+                  datetimeFormatter:
+                    year: yyyy
+                    month: MMM yyyy
+                    day: MMM dd
+                    hour: HH:mm
+                    minute: HH:mm
+                  tickPlacement: 'on'
+              tooltip:
+                x:
+                  format: MMM dd HH:mm
+            series:
+              - entity: sensor.water_softener_salt_level
+                name: Salt Level
+                stroke_width: 1
+                type: line
+                float_precision: 0
+                color_threshold:
+                  - value: 0
+                    color: '#ff0000'
+                  - value: 20
+                    color: '#ff6600'
+                  - value: 40
+                    color: '#ffd700'
+                  - value: 60
+                    color: '#00c853'
+          - type: entities
+            title: System Info
+            show_header_toggle: false
+            entities:
+              - entity: sensor.water_softener_firmware_version
+                name: Firmware Version
+                icon: mdi:chip
+              - entity: input_datetime.water_softener_last_refill
+                name: Last Refill
+                icon: mdi:calendar-check
+              - entity: input_datetime.water_softener_last_notification
+                name: Last Alert
+                icon: mdi:bell-alert
+    badges:
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content:
+          - state
+          - temperature
+          - humidity
+          - uv_index
+          - wind_speed
+        show_entity_picture: true
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_temperature
+        name: Outside Temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_humidity
+        name: Outside Humidity
+  - type: sections
     cards: []
     title: Entry
     icon: mdi:door

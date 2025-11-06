@@ -809,6 +809,355 @@ views:
         entity: sensor.patio_temp_humidity_sensor_humidity
         name: Outside Humidity
   - type: sections
+    title: Appliances
+    path: appliances
+    icon: mdi:washing-machine
+    max_columns: 2
+    sections:
+      - type: grid
+        title: Laundry
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: picture-elements
+                elements:
+                  - type: image
+                    entity: sensor.top_load_washer_run_state
+                    image: /local/lg-icons/sensing.png
+                    state_image:
+                      Detecting: /local/lg-icons/sensing-on.png
+                    style:
+                      top: 33%
+                      left: 33%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.top_load_washer_run_state
+                    image: /local/lg-icons/wash.png
+                    state_image:
+                      Washing: /local/lg-icons/wash-on.png
+                    style:
+                      top: 33%
+                      left: 51%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.top_load_washer_run_state
+                    image: /local/lg-icons/rinse.png
+                    state_image:
+                      Rinsing: /local/lg-icons/rinse-on.png
+                    style:
+                      top: 33%
+                      left: 69%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.top_load_washer_run_state
+                    image: /local/lg-icons/spin.png
+                    state_image:
+                      Spinning: /local/lg-icons/spin-on.png
+                    style:
+                      top: 33%
+                      left: 87%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.top_load_washer
+                    image: /local/lg-icons/wifi.png
+                    state_image:
+                      'on': /local/lg-icons/wifi-on.png
+                    style:
+                      top: 73%
+                      left: 32%
+                      width: 10%
+                      image-rendering: crisp
+                  - type: image
+                    entity: binary_sensor.top_load_washer_door_lock
+                    image: /local/lg-icons/lock.png
+                    state_image:
+                      'on': /local/lg-icons/lock-on.png
+                    style:
+                      top: 73%
+                      left: 45%
+                      width: 10%
+                      image-rendering: crisp
+                  - type: state-label
+                    entity: sensor.top_load_washer_remaining_time
+                    style:
+                      color: '#8df427'
+                      font-family: segment7
+                      font-size: 50px
+                      left: 95%
+                      top: 74%
+                      transform: translate(-100%,-50%)
+                image: /local/hass-washer-card-bg.png
+              - type: conditional
+                conditions:
+                  - entity: sensor.top_load_washer_run_state
+                    state_not: '-'
+                card:
+                  type: entities
+                  entities:
+                    - entity: sensor.top_load_washer
+                      type: attribute
+                      attribute: current_course
+                      name: Current Course
+                      icon: mdi:tune-vertical-variant
+                    - entity: sensor.top_load_washer
+                      type: attribute
+                      attribute: water_temp
+                      name: Water Temperature
+                      icon: mdi:coolant-temperature
+                    - entity: sensor.top_load_washer
+                      type: attribute
+                      attribute: spin_speed
+                      name: Spin Speed
+                      icon: mdi:rotate-right
+                  state_color: false
+          - type: vertical-stack
+            cards:
+              - type: picture-elements
+                elements:
+                  - type: image
+                    entity: sensor.dryer_run_state
+                    image: /local/lg-icons/dry.png
+                    state_image:
+                      Drying: /local/lg-icons/dry-on.png
+                    style:
+                      top: 33%
+                      left: 69%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.dryer_run_state
+                    image: /local/lg-icons/cool.png
+                    state_image:
+                      Cooling: /local/lg-icons/cool-on.png
+                    style:
+                      top: 33%
+                      left: 87%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.dryer
+                    image: /local/lg-icons/wifi.png
+                    state_image:
+                      'on': /local/lg-icons/wifi-on.png
+                    style:
+                      top: 73%
+                      left: 32%
+                      width: 10%
+                      image-rendering: crisp
+                  - type: state-label
+                    entity: sensor.dryer_remaining_time
+                    style:
+                      color: '#8df427'
+                      font-family: segment7
+                      font-size: 50px
+                      left: 95%
+                      top: 74%
+                      transform: translate(-100%,-50%)
+                  - type: image
+                    entity: binary_sensor.dryer_child_lock
+                    image: /local/lg-icons/lock.png
+                    state_image:
+                      'on': /local/lg-icons/lock-on.png
+                    style:
+                      top: 73%
+                      left: 45%
+                      width: 10%
+                      image-rendering: crisp
+                image: /local/hass-dryer-card-bg.png
+              - type: conditional
+                conditions:
+                  - entity: sensor.dryer_run_state
+                    state_not: '-'
+                card:
+                  type: entities
+                  entities:
+                    - entity: sensor.dryer
+                      type: attribute
+                      attribute: current_course
+                      name: Current Course
+                      icon: mdi:tune-vertical-variant
+                    - entity: sensor.dryer
+                      type: attribute
+                      attribute: temp_control
+                      name: Temperature Control
+                      icon: mdi:thermometer
+                    - entity: sensor.dryer
+                      type: attribute
+                      attribute: dry_level
+                      name: Dry Level
+                      icon: mdi:air-filter
+      - type: grid
+        title: Fridge & Freezer
+        columns: 1
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
+                name: Fridge
+                show_state: true
+                state_display: |
+                  [[[
+                    return entity.state === 'on' ? 'Door Open' : 'Door Closed';
+                  ]]]
+                icon: |
+                  [[[
+                    return entity.state === 'on' ? 'mdi:fridge-alert' : 'mdi:fridge';
+                  ]]]
+                styles:
+                  card:
+                    - height: 150px
+                  icon:
+                    - width: 80px
+                    - color: |
+                        [[[
+                          const door = states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state;
+                          const temp = parseFloat(states['sensor.kitchen_fridge_temp_humidity_temperature'].state);
+                          if (door === 'on') return '#ff0000';
+                          if (temp > 45 || temp < 32) return '#ff0000';
+                          if (temp > 42 || temp < 35) return '#ffeb3b';
+                          return '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 18px
+                    - font-weight: bold
+                  state:
+                    - font-size: 14px
+                tap_action:
+                  action: more-info
+              - type: custom:button-card
+                entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
+                name: Freezer
+                show_state: true
+                state_display: |
+                  [[[
+                    return entity.state === 'on' ? 'Door Open' : 'Door Closed';
+                  ]]]
+                icon: |
+                  [[[
+                    return entity.state === 'on' ? 'mdi:snowflake-alert' : 'mdi:snowflake';
+                  ]]]
+                styles:
+                  card:
+                    - height: 150px
+                  icon:
+                    - width: 80px
+                    - color: |
+                        [[[
+                          const door = states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state;
+                          const temp = parseFloat(states['sensor.kitchen_freezer_temp_humidity_temperature'].state);
+                          if (door === 'on') return '#ff0000';
+                          if (temp > 18 || temp < 7) return '#ff0000';
+                          if (temp > 15 || temp < 10) return '#ffeb3b';
+                          return '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 18px
+                    - font-weight: bold
+                  state:
+                    - font-size: 14px
+                tap_action:
+                  action: more-info
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.kitchen_fridge_temp_humidity_temperature
+                name: Fridge Temp
+                unit: °F
+                needle: true
+                min: 30
+                max: 50
+                segments:
+                  - from: 30
+                    color: '#ff0000'
+                  - from: 32
+                    color: '#ffeb3b'
+                  - from: 35
+                    color: '#4caf50'
+                  - from: 42
+                    color: '#ffeb3b'
+                  - from: 45
+                    color: '#ff0000'
+              - type: gauge
+                entity: sensor.kitchen_freezer_temp_humidity_temperature
+                name: Freezer Temp
+                unit: °F
+                needle: true
+                min: 0
+                max: 30
+                segments:
+                  - from: 0
+                    color: '#ff0000'
+                  - from: 7
+                    color: '#ffeb3b'
+                  - from: 10
+                    color: '#4caf50'
+                  - from: 15
+                    color: '#ffeb3b'
+                  - from: 18
+                    color: '#ff0000'
+          - type: entities
+            title: Current Conditions
+            show_header_toggle: false
+            entities:
+              - entity: sensor.kitchen_fridge_temp_humidity_temperature
+                name: Fridge
+                secondary_info: none
+              - entity: sensor.kitchen_fridge_temp_humidity_humidity
+                name: Fridge Humidity
+                secondary_info: none
+              - type: divider
+              - entity: sensor.kitchen_freezer_temp_humidity_temperature
+                name: Freezer
+                secondary_info: none
+              - entity: sensor.kitchen_freezer_temp_humidity_humidity
+                name: Freezer Humidity
+                secondary_info: none
+              - type: divider
+              - entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
+                name: Fridge Door
+                secondary_info: last-changed
+              - entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
+                name: Freezer Door
+                secondary_info: last-changed
+          - type: history-graph
+            title: Temperature History (24 hours)
+            hours_to_show: 24
+            entities:
+              - entity: sensor.kitchen_fridge_temp_humidity_temperature
+                name: Fridge
+              - entity: sensor.kitchen_freezer_temp_humidity_temperature
+                name: Freezer
+    badges:
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content:
+          - state
+          - temperature
+          - humidity
+          - uv_index
+          - wind_speed
+        show_entity_picture: true
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_temperature
+        name: Outside Temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_humidity
+        name: Outside Humidity
+  - type: sections
     cards: []
     title: Entry
     icon: mdi:door

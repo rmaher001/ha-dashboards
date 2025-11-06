@@ -149,6 +149,11 @@ views:
       # SECTION 1: KITCHEN LIGHTS
       - type: grid
         title: Kitchen Lights
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(255, 255, 255, 0.1);
+            }
         cards:
           - type: grid
             columns: 2
@@ -185,6 +190,11 @@ views:
       # SECTION 2: LIVING ROOM LIGHTS
       - type: grid
         title: Living Room Lights
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(255, 255, 255, 0.1);
+            }
         cards:
           - type: grid
             columns: 2
@@ -239,6 +249,11 @@ views:
       # SECTION 3: STAIRS LIGHTS
       - type: grid
         title: Stairs
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(255, 255, 255, 0.1);
+            }
         cards:
           - type: grid
             columns: 2
@@ -266,6 +281,11 @@ views:
       # SECTION 4: CLIMATE
       - type: grid
         title: Climate & Environment
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(255, 255, 255, 0.1);
+            }
         cards:
           - type: grid
             columns: 2
@@ -295,6 +315,11 @@ views:
       # SECTION 5: DOORS & WINDOWS
       - type: grid
         title: Doors & Windows
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(255, 255, 255, 0.1);
+            }
         cards:
           - type: grid
             columns: 2
@@ -318,6 +343,11 @@ views:
       # SECTION 6: MEDIA
       - type: grid
         title: Media
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(255, 255, 255, 0.1);
+            }
         cards:
           - type: custom:mini-media-player
             entity: media_player.living_room_tv_2_4
@@ -350,6 +380,11 @@ views:
       # SECTION 7: MONITORING
       - type: grid
         title: Monitoring
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(255, 255, 255, 0.1);
+            }
         cards:
           - type: entities
             show_header_toggle: false

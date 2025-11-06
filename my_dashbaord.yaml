@@ -1412,36 +1412,97 @@ views:
     title: Garage
     path: garage
     icon: mdi:garage
-    max_columns: 2
+    max_columns: 1
     sections:
+      # SECTION 1: GARAGE DOOR
       - type: grid
+        title: Garage Door
         cards:
-          - type: entities
-            entities:
-              - entity: cover.group_garage_door_opener_door
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: cover.group_garage_door_opener_door
                 name: Door
-                secondary_info: last-changed
-              - entity: binary_sensor.group_garage_door_opener_motion
-                name: Opener Motion
-                secondary_info: last-changed
-              - entity: binary_sensor.garage_camera_smart_occupancy_sensor_occupancysensor
-                name: Smart Occupancy
-                secondary_info: last-changed
-              - entity: light.group_garage_door_opener_light
+                icon: mdi:garage
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 2: LIGHTS
+      - type: grid
+        title: Lights
+        cards:
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: light.group_garage_door_opener_light
                 name: Opener Light
-                secondary_info: last-changed
-              - entity: light.garage_wall_lights
-                secondary_info: last-changed
-              - entity: light.meross_smart_switch_3
-                name: Garage Shop Light
-                secondary_info: last-changed
-              - entity: light.garage_door_christmas_lights
-                secondary_info: last-changed
-              - entity: binary_sensor.garage_water_heater_moisture_sensor_water_leak
-                secondary_info: last-changed
-                name: Water Heater Moisture
-            title: Garage
-            state_color: true
+                icon: mdi:lightbulb
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: light.garage_wall_lights
+                icon: mdi:wall-sconce-flat
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: light.meross_smart_switch_3
+                name: Shop Light
+                icon: mdi:lightbulb-fluorescent-tube
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: light.garage_door_christmas_lights
+                icon: mdi:pine-tree
+                color: green
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 3: CONTROLS
+      - type: grid
+        title: Controls
+        cards:
           - type: button
             entity: input_button.garage_confirm_person_present
             name: Confirm Person Present
@@ -1450,116 +1511,346 @@ views:
               action: toggle
               confirmation:
                 text: Extend garage timeout to 60 minutes?
+
+      # SECTION 4: MONITORING
+      - type: grid
+        title: Monitoring
+        cards:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Monitoring
+            padding: 5
+            entities:
+              - entity: binary_sensor.group_garage_door_opener_motion
+                name: Opener Motion
+                secondary_info: last-changed
+                icon: mdi:motion-sensor
+              - entity: binary_sensor.garage_camera_smart_occupancy_sensor_occupancysensor
+                name: Smart Occupancy
+                secondary_info: last-changed
+                icon: mdi:eye
+              - entity: binary_sensor.garage_water_heater_moisture_sensor_water_leak
+                name: Water Heater Moisture
+                secondary_info: last-changed
+                icon: mdi:water-alert
+
     badges:
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: weather.forecast_home
+        name: Forecast
         state_content:
           - state
           - temperature
-          - humidity
-          - uv_index
-          - wind_speed
-        show_entity_picture: true
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside Temperature
+        name: Patio Temp
+        state_content:
+          - state
+        display_precision: 1
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Outside Humidity
+        name: Patio Humidity
+        state_content:
+          - state
+        display_precision: 0
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
   - type: sections
     title: Patio & Entrance
     path: patio-entrance
     icon: mdi:door-open
-    max_columns: 2
+    max_columns: 1
     sections:
+      # SECTION 1: PATIO LIGHTS
       - type: grid
-        title: Patio
+        title: Patio Lights
         cards:
-          - type: entities
-            entities:
-              - entity: switch.patio_bistro_lights_2
-                secondary_info: last-changed
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: switch.patio_bistro_lights_2
                 name: Bistro Lights
-              - entity: switch.patio_christmas_lights_2
-                name: Patio Christmas Lights
-                secondary_info: last-changed
-              - entity: light.patio_camera_floodlight_timed
-                name: Patio Camera Floodlight
-                secondary_info: last-changed
-              - entity: sensor.patio_temp_humidity_sensor_temperature
-                name: Temperature
-                secondary_info: last-changed
-              - entity: sensor.patio_temp_humidity_sensor_humidity
-                name: Humidity
-                secondary_info: last-changed
-            title: Patio
-            state_color: true
+                icon: mdi:string-lights
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: switch.patio_christmas_lights_2
+                name: Christmas Lights
+                icon: mdi:pine-tree
+                color: green
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: light.patio_camera_floodlight_timed
+                name: Camera Floodlight
+                icon: mdi:spotlight-beam
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 2: ENTRANCE LIGHTS
       - type: grid
-        title: Entrance
+        title: Entrance Lights
         cards:
-          - type: entities
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: light.front_porch_sconces
+                icon: mdi:wall-sconce-flat
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: light.entrance_overhead_light
+                icon: mdi:ceiling-light
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: light.front_side_camera_floodlight_timed
+                name: Side Camera Floodlight
+                icon: mdi:spotlight-beam
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: light.sidewalk_street_camera_illuminator
+                icon: mdi:lightbulb-on
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: light.front_full_camera_illuminator
+                icon: mdi:lightbulb-on
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 3: LOCK & SECURITY
+      - type: grid
+        title: Lock & Security
+        cards:
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: lock.front_door_lock
+                icon: mdi:door-closed-lock
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 4: CLIMATE & ENVIRONMENT
+      - type: grid
+        title: Climate & Environment
+        cards:
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: sensor.patio_temp_humidity_sensor_temperature
+                name: Patio Temp
+                icon: mdi:thermometer
+                color: red
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: sensor.patio_temp_humidity_sensor_humidity
+                name: Patio Humidity
+                icon: mdi:water-percent
+                color: blue
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: sensor.entrance_temp_humidity_temperature
+                name: Entrance Temp
+                icon: mdi:thermometer
+                color: red
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: sensor.entrance_temp_humidity_humidity
+                name: Entrance Humidity
+                icon: mdi:water-percent
+                color: blue
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 5: MONITORING
+      - type: grid
+        title: Monitoring
+        cards:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Monitoring
+            padding: 5
             entities:
-              - entity: light.front_porch_sconces
-                secondary_info: last-changed
-              - entity: light.entrance_overhead_light
-                secondary_info: last-changed
-              - entity: lock.front_door_lock
-                secondary_info: last-changed
               - entity: binary_sensor.front_door_lock_low_battery_level
+                name: Lock Low Battery
                 secondary_info: last-changed
+                icon: mdi:battery-alert
               - entity: sensor.front_door_lock_battery_level
+                name: Lock Battery Level
                 secondary_info: last-changed
-              - entity: sensor.entrance_temp_humidity_temperature
-                secondary_info: last-changed
-                name: Temperature
-              - entity: sensor.entrance_temp_humidity_humidity
-                secondary_info: last-changed
-                name: Humidity
-              - entity: light.front_side_camera_floodlight_timed
-                name: Front Side Camera Floodlight
-                secondary_info: last-changed
-              - entity: light.sidewalk_street_camera_illuminator
-                secondary_info: last-changed
-              - entity: light.front_full_camera_illuminator
-                secondary_info: last-changed
+                icon: mdi:battery
               - entity: sensor.doorbell_cpu_usage
                 secondary_info: last-changed
-            title: Entrance
-            state_color: true
+                icon: mdi:chip
+
     badges:
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: weather.forecast_home
+        name: Forecast
         state_content:
           - state
           - temperature
-          - humidity
-          - uv_index
-          - wind_speed
-        show_entity_picture: true
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside Temperature
+        name: Patio Temp
+        state_content:
+          - state
+        display_precision: 1
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Outside Humidity
+        name: Patio Humidity
+        state_content:
+          - state
+        display_precision: 0
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
   - type: sections
     max_columns: 2
     title: Climate Control

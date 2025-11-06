@@ -614,6 +614,73 @@ views:
         entity: sensor.patio_temp_humidity_sensor_humidity
         name: Outside Humidity
   - type: sections
+    title: Garage
+    path: garage
+    icon: mdi:garage
+    max_columns: 2
+    sections:
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: cover.group_garage_door_opener_door
+                name: Door
+                secondary_info: last-changed
+              - entity: binary_sensor.group_garage_door_opener_motion
+                name: Opener Motion
+                secondary_info: last-changed
+              - entity: binary_sensor.garage_camera_smart_occupancy_sensor_occupancysensor
+                name: Smart Occupancy
+                secondary_info: last-changed
+              - entity: light.group_garage_door_opener_light
+                name: Opener Light
+                secondary_info: last-changed
+              - entity: light.garage_wall_lights
+                secondary_info: last-changed
+              - entity: light.meross_smart_switch_3
+                name: Garage Shop Light
+                secondary_info: last-changed
+              - entity: light.garage_door_christmas_lights
+                secondary_info: last-changed
+              - entity: binary_sensor.garage_water_heater_moisture_sensor_water_leak
+                secondary_info: last-changed
+                name: Water Heater Moisture
+            title: Garage
+            state_color: true
+          - type: button
+            entity: input_button.garage_confirm_person_present
+            name: Confirm Person Present
+            icon: mdi:account-check
+            tap_action:
+              action: toggle
+              confirmation:
+                text: Extend garage timeout to 60 minutes?
+    badges:
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content:
+          - state
+          - temperature
+          - humidity
+          - uv_index
+          - wind_speed
+        show_entity_picture: true
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_temperature
+        name: Outside Temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_humidity
+        name: Outside Humidity
+  - type: sections
     cards: []
     title: Entry
     icon: mdi:door

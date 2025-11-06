@@ -1158,6 +1158,94 @@ views:
         entity: sensor.patio_temp_humidity_sensor_humidity
         name: Outside Humidity
   - type: sections
+    title: Plants
+    path: plants
+    icon: mdi:flower
+    max_columns: 4
+    sections:
+      - type: grid
+        cards:
+          - type: custom:flower-card
+            entity: plant.satsuma_mandarin_2
+            battery_sensor: sensor.satsuma_mandarin_battery
+            show_bars:
+              - moisture
+              - temperature
+              - humidity
+              - dli
+              - conductivity
+              - illuminance
+            display_type: full
+          - type: custom:flower-card
+            entity: plant.dracaena_fragrans_massangeana
+            battery_sensor: sensor.dracaena_fragrans_battery
+            show_bars:
+              - moisture
+              - temperature
+              - humidity
+              - dli
+              - conductivity
+              - illuminance
+            display_type: full
+          - type: custom:flower-card
+            entity: plant.aspidistra_elatior
+            battery_sensor: sensor.dracaena_fragrans_battery
+            show_bars:
+              - moisture
+              - temperature
+              - humidity
+              - dli
+              - conductivity
+              - illuminance
+            display_type: full
+          - type: custom:flower-card
+            entity: plant.dracaena_fragrans
+            battery_sensor: sensor.dracaena_fragrans_battery
+            show_bars:
+              - moisture
+              - temperature
+              - humidity
+              - dli
+              - conductivity
+              - illuminance
+            display_type: full
+          - type: custom:flower-card
+            entity: plant.schefflera_arboricola
+            battery_sensor: sensor.dracaena_fragrans_battery
+            show_bars:
+              - moisture
+              - temperature
+              - humidity
+              - dli
+              - conductivity
+              - illuminance
+            display_type: full
+    badges:
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content:
+          - state
+          - temperature
+          - humidity
+          - uv_index
+          - wind_speed
+        show_entity_picture: true
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_temperature
+        name: Outside Temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_humidity
+        name: Outside Humidity
+  - type: sections
     cards: []
     title: Entry
     icon: mdi:door

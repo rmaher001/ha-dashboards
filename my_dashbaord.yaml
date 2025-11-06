@@ -924,204 +924,490 @@ views:
     title: Dima's Bedroom
     path: dima-bedroom
     icon: mdi:bed
-    max_columns: 2
+    max_columns: 1
     sections:
+      # SECTION 1: LIGHTS
       - type: grid
+        title: Lights
         cards:
-          - type: entities
-            entities:
-              - entity: light.dima_bedroom_main_lights
-                secondary_info: last-changed
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: light.dima_bedroom_main_lights
                 name: Main Lights
+                icon: mdi:ceiling-light
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 2: CLIMATE & ENVIRONMENT
+      - type: grid
+        title: Climate & Environment
+        cards:
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: sensor.dima_bedroom_presence_dps310_temperature
+                name: Temperature
+                icon: mdi:thermometer
+                color: red
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: sensor.dima_bedroom_presence_co2
+                name: CO2
+                icon: mdi:molecule-co2
+                color: green
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: sensor.dima_bedroom_presence_ltr390_light
+                name: Illuminance
+                icon: mdi:brightness-6
+                color: yellow
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 3: MONITORING
+      - type: grid
+        title: Monitoring
+        cards:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Monitoring
+            padding: 5
+            entities:
               - entity: binary_sensor.dima_bedroom_presence_radar_target
                 name: Presence
                 secondary_info: last-changed
-                icon: mdi:home
-              - entity: sensor.dima_bedroom_presence_co2
-                name: CO2
-                secondary_info: last-changed
-              - entity: sensor.dima_bedroom_presence_ltr390_light
-                secondary_info: last-changed
-                name: Illuminance
-              - entity: sensor.dima_bedroom_presence_dps310_temperature
-                name: Temperature
-                secondary_info: last-changed
+                icon: mdi:eye
               - entity: timer.dima_bedroom_lights_timer
                 name: Lights Timer
                 secondary_info: last-changed
-            title: Dima's Bedroom
-            state_color: true
+                icon: mdi:timer
+
     badges:
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: weather.forecast_home
+        name: Forecast
         state_content:
           - state
           - temperature
-          - humidity
-          - uv_index
-          - wind_speed
-        show_entity_picture: true
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside Temperature
+        name: Patio Temp
+        state_content:
+          - state
+        display_precision: 1
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Outside Humidity
+        name: Patio Humidity
+        state_content:
+          - state
+        display_precision: 0
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
   - type: sections
     title: Zoe's Bedroom
     path: zoe-bedroom
     icon: mdi:bed
-    max_columns: 2
+    max_columns: 1
     sections:
+      # SECTION 1: LIGHTS
       - type: grid
+        title: Lights
         cards:
-          - type: entities
-            entities:
-              - entity: light.zoe_bedroom_main_lights
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: light.zoe_bedroom_main_lights
                 name: Main Lights
-                secondary_info: last-changed
-              - entity: light.christmas_tree_zoe_outlet
-                secondary_info: last-changed
+                icon: mdi:ceiling-light
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: light.christmas_tree_zoe_outlet
                 name: Christmas Tree
-              - entity: binary_sensor.zoe_bedroom_presence_sensors
-                secondary_info: last-changed
-                name: Presence
-                icon: mdi:home
-              - entity: sensor.zoe_bedroom_presence_2_co2
-                name: CO2
-                secondary_info: last-changed
-              - entity: sensor.zoe_bedroom_temp_humidity_temperature
+                icon: mdi:pine-tree
+                color: green
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 2: CLIMATE & ENVIRONMENT
+      - type: grid
+        title: Climate & Environment
+        cards:
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: sensor.zoe_bedroom_temp_humidity_temperature
                 name: Temperature
-                secondary_info: last-changed
-              - entity: sensor.zoe_bedroom_temp_humidity_humidity
-                secondary_info: last-changed
+                icon: mdi:thermometer
+                color: red
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: sensor.zoe_bedroom_temp_humidity_humidity
                 name: Humidity
-              - entity: sensor.zoe_bedroom_presence_2_ltr390_light
-                secondary_info: last-changed
+                icon: mdi:water-percent
+                color: blue
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: sensor.zoe_bedroom_presence_2_co2
+                name: CO2
+                icon: mdi:molecule-co2
+                color: green
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: sensor.zoe_bedroom_presence_2_ltr390_light
                 name: Illuminance
+                icon: mdi:brightness-6
+                color: yellow
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 3: DOORS & WINDOWS
+      - type: grid
+        title: Doors & Windows
+        cards:
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: binary_sensor.zoe_bedroom_window_contact_sensor_contact
+                name: Window
+                icon: mdi:window-closed
+                tap_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 4: MONITORING
+      - type: grid
+        title: Monitoring
+        cards:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Monitoring
+            padding: 5
+            entities:
+              - entity: binary_sensor.zoe_bedroom_presence_sensors
+                name: Presence
+                secondary_info: last-changed
+                icon: mdi:eye
               - entity: timer.zoe_bedroom_lights_timer
                 name: Lights Timer
                 secondary_info: last-changed
-              - entity: binary_sensor.zoe_bedroom_window_contact_sensor_contact
-                name: Window
-                secondary_info: last-changed
-            title: Zoe's Bedroom
-            state_color: true
+                icon: mdi:timer
+
     badges:
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: weather.forecast_home
+        name: Forecast
         state_content:
           - state
           - temperature
-          - humidity
-          - uv_index
-          - wind_speed
-        show_entity_picture: true
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside Temperature
+        name: Patio Temp
+        state_content:
+          - state
+        display_precision: 1
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Outside Humidity
+        name: Patio Humidity
+        state_content:
+          - state
+        display_precision: 0
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
   - type: sections
     title: Upstairs Bathroom
     path: upstairs-bathroom
     icon: mdi:shower
-    max_columns: 2
+    max_columns: 1
     sections:
+      # SECTION 1: BATHROOM
       - type: grid
         title: Bathroom
         cards:
-          - type: entities
-            entities:
-              - entity: sensor.upstairs_bathroom_temp_humidity_2_temperature
-                name: Temperature
-                secondary_info: last-changed
-              - entity: sensor.upstairs_bathroom_temp_humidity_2_humidity
-                name: Humidity
-                secondary_info: last-changed
-              - entity: binary_sensor.upstairs_bathroom_humidity_target
-                secondary_info: last-changed
-                name: Humidity Target
-              - entity: sensor.upstairs_bathroom_derivative_humidity
-                secondary_info: last-changed
-                name: Derivative Humidity
-              - entity: light.upstairs_bathroom_main_lights
-                secondary_info: last-changed
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: light.upstairs_bathroom_main_lights
                 name: Main Lights
-              - entity: fan.upstairs_bathroom_exhaust_fan
-                secondary_info: last-changed
+                icon: mdi:ceiling-light
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: fan.upstairs_bathroom_exhaust_fan
                 name: Exhaust Fan
-              - entity: binary_sensor.upstairs_bathroom_motion_sensors
-                secondary_info: last-changed
-                name: Presence
-              - entity: timer.upstairs_bathroom_fan_timer
-                secondary_info: last-changed
-                name: Fan Timer
-              - entity: binary_sensor.upstairs_bathroom_moisture_sensor_water_leak
-                secondary_info: last-changed
-                name: Moisture
-            title: Upstairs Bathroom
-            state_color: true
+                icon: mdi:fan
+                color: blue
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 2: VANITY
       - type: grid
         title: Vanity
         cards:
-          - type: entities
-            entities:
-              - entity: light.upstairs_bathroom_vanity_lights
-                secondary_info: last-changed
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: light.upstairs_bathroom_vanity_lights
                 name: Lights
+                icon: mdi:vanity-light
+                color: amber
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 3: CLIMATE & ENVIRONMENT
+      - type: grid
+        title: Climate & Environment
+        cards:
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: sensor.upstairs_bathroom_temp_humidity_2_temperature
+                name: Temperature
+                icon: mdi:thermometer
+                color: red
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+              - type: tile
+                entity: sensor.upstairs_bathroom_temp_humidity_2_humidity
+                name: Humidity
+                icon: mdi:water-percent
+                color: blue
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
+
+      # SECTION 4: MONITORING
+      - type: grid
+        title: Monitoring
+        cards:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Monitoring
+            padding: 5
+            entities:
+              - entity: binary_sensor.upstairs_bathroom_humidity_target
+                name: Humidity Target
+                secondary_info: last-changed
+              - entity: sensor.upstairs_bathroom_derivative_humidity
+                name: Derivative Humidity
+                secondary_info: last-changed
+              - entity: binary_sensor.upstairs_bathroom_motion_sensors
+                name: Bathroom Presence
+                secondary_info: last-changed
+                icon: mdi:eye
+              - entity: timer.upstairs_bathroom_fan_timer
+                name: Fan Timer
+                secondary_info: last-changed
+                icon: mdi:timer
+              - entity: binary_sensor.upstairs_bathroom_moisture_sensor_water_leak
+                name: Bathroom Moisture
+                secondary_info: last-changed
+                icon: mdi:water-alert
               - entity: binary_sensor.upstairs_vanity_motion_occupancy
+                name: Vanity Presence
                 secondary_info: last-changed
-                name: Presence
+                icon: mdi:eye
               - entity: binary_sensor.upstairs_vanity_moisture_sensor_water_leak
-                name: Moisture
+                name: Vanity Moisture
                 secondary_info: last-changed
-            state_color: true
-            title: Upstairs Bathroom Vanity
+                icon: mdi:water-alert
+
     badges:
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: weather.forecast_home
+        name: Forecast
         state_content:
           - state
           - temperature
-          - humidity
-          - uv_index
-          - wind_speed
-        show_entity_picture: true
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_temperature
-        name: Outside Temperature
+        name: Patio Temp
+        state_content:
+          - state
+        display_precision: 1
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
       - type: entity
         show_name: true
         show_state: true
         show_icon: true
         entity: sensor.patio_temp_humidity_sensor_humidity
-        name: Outside Humidity
+        name: Patio Humidity
+        state_content:
+          - state
+        display_precision: 0
+        card_mod:
+          style: |
+            :host {
+              --ha-label-badge-size: 80px;
+              --ha-label-badge-font-size: 1.2em;
+            }
   - type: sections
     title: Garage
     path: garage

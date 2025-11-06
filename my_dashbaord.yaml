@@ -2150,20 +2150,25 @@ views:
             features:
               - type: select-options
           - type: entities
+            title: System Status
             show_header_toggle: false
             state_color: true
             entities:
               - type: custom:template-entity-row
                 entity: input_datetime.home_security_last_analysis
                 name: Last Analysis
-                secondary: >-
+                state: >-
                   {{ relative_time(states.input_datetime.home_security_last_analysis.last_changed) }} ago
                 icon: mdi:clock-check
                 tap_action:
                   action: none
               - entity: input_boolean.home_security_audio_alerts
                 name: Audio Alerts
-              - type: divider
+          - type: entities
+            title: Advanced Settings
+            show_header_toggle: false
+            state_color: true
+            entities:
               - entity: input_number.home_security_tts_volume
                 name: Alert Volume
               - entity: input_number.home_security_confidence_threshold

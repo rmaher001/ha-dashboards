@@ -151,7 +151,7 @@ views:
         title: Kitchen Lights
         cards:
           - type: grid
-            columns: 2
+            columns: 3
             square: false
             cards:
               - type: tile
@@ -184,7 +184,7 @@ views:
         title: Living Room Lights
         cards:
           - type: grid
-            columns: 2
+            columns: 3
             square: false
             cards:
               - type: tile
@@ -258,7 +258,7 @@ views:
         title: Climate & Environment
         cards:
           - type: grid
-            columns: 2
+            columns: 4
             square: false
             cards:
               - type: tile

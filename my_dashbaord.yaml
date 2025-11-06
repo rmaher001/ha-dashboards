@@ -766,6 +766,49 @@ views:
         entity: sensor.patio_temp_humidity_sensor_humidity
         name: Outside Humidity
   - type: sections
+    max_columns: 2
+    title: Climate Control
+    path: climate
+    icon: mdi:hvac
+    sections:
+      - type: grid
+        cards:
+          - type: thermostat
+            entity: climate.home_downstairs
+            features:
+              - style: icons
+                type: climate-hvac-modes
+          - type: thermostat
+            entity: climate.home_upstairs
+            features:
+              - style: icons
+                type: climate-hvac-modes
+    badges:
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: weather.forecast_home
+        state_content:
+          - state
+          - temperature
+          - humidity
+          - uv_index
+          - wind_speed
+        show_entity_picture: true
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_temperature
+        name: Outside Temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.patio_temp_humidity_sensor_humidity
+        name: Outside Humidity
+  - type: sections
     cards: []
     title: Entry
     icon: mdi:door

@@ -2091,25 +2091,30 @@ views:
       - type: grid
         title: Access Control
         cards:
-          - type: button
-            entity: cover.group_garage_door_opener_door
-            name: Garage Door
-            show_state: true
-            icon: mdi:garage
-            tap_action:
-              action: toggle
-              confirmation:
-                text: Open/close garage door?
-          - type: button
-            entity: lock.front_door_lock
-            name: Front Door
-            show_state: true
-            icon: mdi:door
-            tap_action:
-              action: toggle
-              confirmation:
-                text: Lock/unlock front door?
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: cover.group_garage_door_opener_door
+                name: Garage Door
+                icon: mdi:garage
+                tap_action:
+                  action: toggle
+                  confirmation:
+                    text: Open/close garage door?
+              - type: tile
+                entity: lock.front_door_lock
+                name: Front Door Lock
+                icon: mdi:door-closed-lock
+                tap_action:
+                  action: toggle
+                  confirmation:
+                    text: Lock/unlock front door?
           - type: entities
+            title: Door & Window Sensors
+            show_header_toggle: false
+            state_color: true
             entities:
               - entity: binary_sensor.front_door_group_contact_sensor
                 name: Front Door
@@ -2120,6 +2125,7 @@ views:
               - entity: binary_sensor.patio_door_contact_sensor_contact
                 name: Patio Door
                 secondary_info: last-changed
+              - type: divider
               - entity: binary_sensor.zoe_bedroom_window_contact_sensor_contact
                 name: Zoe Window
                 secondary_info: last-changed
@@ -2128,56 +2134,56 @@ views:
                 name: Master Bedroom Window
                 secondary_info: last-changed
                 icon: mdi:window-closed
-            title: Sensors
-            state_color: true
       - type: grid
         title: Security System
         cards:
-          - type: tile
-            entity: input_select.home_security_mode
-            name: Security Mode
-            icon: mdi:shield-home
-            color: >-
-              {% if is_state('input_select.home_security_mode', 'Away') %}
-              red
-              {% else %}
-              green
-              {% endif %}
-          - type: horizontal-stack
+          - type: grid
+            columns: 3
+            square: false
             cards:
-              - type: button
+              - type: tile
                 entity: input_select.home_security_mode
-                name: Set Home Mode
+                name: Current Mode
+                icon: mdi:shield-check
+                color: >-
+                  {% if is_state('input_select.home_security_mode', 'Away') %}
+                  red
+                  {% else %}
+                  green
+                  {% endif %}
+              - type: tile
+                entity: input_select.home_security_mode
+                name: Home Mode
                 icon: mdi:shield-home
-                show_state: false
                 tap_action:
                   action: call-service
                   service: input_select.select_option
                   service_data:
                     entity_id: input_select.home_security_mode
                     option: Home
-              - type: button
+                color: green
+              - type: tile
                 entity: input_select.home_security_mode
-                name: Arm Away Mode
+                name: Away Mode
                 icon: mdi:shield-lock
-                show_state: false
                 tap_action:
                   action: call-service
                   service: input_select.select_option
                   service_data:
                     entity_id: input_select.home_security_mode
                     option: Away
+                color: red
           - type: entities
-            title: System Status
+            show_header_toggle: false
+            state_color: true
             entities:
               - entity: input_datetime.home_security_last_analysis
                 name: Last Analysis
+                secondary_info: last-changed
+                icon: mdi:clock-check
               - entity: input_boolean.home_security_audio_alerts
                 name: Audio Alerts
-            state_color: true
-          - type: entities
-            title: Settings
-            entities:
+              - type: divider
               - entity: input_number.home_security_tts_volume
                 name: Alert Volume
               - entity: input_number.home_security_confidence_threshold

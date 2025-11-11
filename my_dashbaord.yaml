@@ -1123,6 +1123,20 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
+              - type: tile
+                entity: light.upstairs_vanity_night_light
+                name: Night Light
+                icon: mdi:lightbulb-night
+                color: blue
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.1);
+                    }
       - type: grid
         cards:
           - type: heading
@@ -1187,6 +1201,14 @@ views:
                 name: Vanity Moisture
                 secondary_info: last-changed
                 icon: mdi:water-alert
+              - entity: binary_sensor.upstairs_vanity_night_light_occupancy
+                name: Vanity Night Light Motion
+                secondary_info: last-changed
+                icon: mdi:motion-sensor
+              - entity: sensor.upstairs_vanity_night_light_illuminance
+                name: Vanity Night Light Luminance
+                secondary_info: last-changed
+                icon: mdi:brightness-6
   - type: sections
     title: Garage
     path: garage

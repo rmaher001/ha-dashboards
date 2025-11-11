@@ -1717,12 +1717,14 @@ views:
                       attribute: dry_level
                       name: Dry Level
                       icon: mdi:air-filter
+      - type: grid
+        cards:
           - type: custom:stack-in-card
             mode: horizontal
             card_mod:
               style: |
                 ha-card {
-                  height: 200px;
+                  height: 210px;
                   background-color: rgba(50,50,50,0.7);
                   padding-top: 35px;
                   box-sizing: border-box;
@@ -1759,7 +1761,7 @@ views:
               - type: gauge
                 entity: sensor.kitchen_fridge_temp_humidity_temperature
                 name: ' '
-                unit: '°F'
+                unit: °F
                 needle: true
                 min: 30
                 max: 50
@@ -1803,7 +1805,7 @@ views:
             card_mod:
               style: |
                 ha-card {
-                  height: 200px;
+                  height: 210px;
                   background-color: rgba(50,50,50,0.7);
                   padding-top: 35px;
                   box-sizing: border-box;
@@ -1840,7 +1842,7 @@ views:
               - type: gauge
                 entity: sensor.kitchen_freezer_temp_probe_temperature
                 name: ' '
-                unit: '°F'
+                unit: °F
                 needle: true
                 min: -30
                 max: 20

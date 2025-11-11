@@ -647,7 +647,7 @@ views:
             square: false
             cards:
               - type: tile
-                entity: switch.master_bathroom_main_lights
+                entity: light.master_bathroom_main_lights_2
                 name: Main Lights
                 icon: mdi:ceiling-light
                 color: amber
@@ -1074,7 +1074,7 @@ views:
             square: false
             cards:
               - type: tile
-                entity: light.upstairs_bathroom_main_lights
+                entity: light.upstairs_bathroom_main_lights_2
                 name: Main Lights
                 icon: mdi:ceiling-light
                 color: amber
@@ -1110,7 +1110,7 @@ views:
             square: false
             cards:
               - type: tile
-                entity: light.upstairs_bathroom_vanity_lights
+                entity: light.upstairs_bathroom_vanity_lights_2
                 name: Lights
                 icon: mdi:vanity-light
                 color: amber

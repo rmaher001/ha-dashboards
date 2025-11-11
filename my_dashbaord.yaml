@@ -1723,7 +1723,7 @@ views:
               style: |
                 ha-card {
                   height: 200px;
-                  background-color: rgba(0,0,0,0.3);
+                  background-color: rgba(50,50,50,0.7);
                   padding-top: 35px;
                   box-sizing: border-box;
                 }
@@ -1804,7 +1804,7 @@ views:
               style: |
                 ha-card {
                   height: 200px;
-                  background-color: rgba(0,0,0,0.3);
+                  background-color: rgba(50,50,50,0.7);
                   padding-top: 35px;
                   box-sizing: border-box;
                 }

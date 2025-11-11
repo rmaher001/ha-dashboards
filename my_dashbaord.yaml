@@ -1742,146 +1742,148 @@ views:
                       name: Dry Level
                       icon: mdi:air-filter
       - type: grid
-        title: Fridge & Freezer
-        columns: 1
+        title: Fridge Monitoring
         cards:
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
-                name: Fridge
-                show_state: true
-                state_display: |
-                  [[[
-                    return entity.state === 'on' ? 'Door Open' : 'Door Closed';
-                  ]]]
-                icon: |
-                  [[[
-                    return entity.state === 'on' ? 'mdi:fridge-alert' : 'mdi:fridge';
-                  ]]]
-                styles:
-                  card:
-                    - height: 150px
-                  icon:
-                    - width: 80px
-                    - color: |
-                        [[[
-                          const door = states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state;
-                          const temp = parseFloat(states['sensor.kitchen_fridge_temp_humidity_temperature'].state);
-                          if (door === 'on') return '#ff0000';
-                          if (temp > 45 || temp < 32) return '#ff0000';
-                          if (temp > 42 || temp < 35) return '#ffeb3b';
-                          return '#4caf50';
-                        ]]]
-                  name:
-                    - font-size: 18px
-                    - font-weight: bold
-                  state:
-                    - font-size: 14px
-                tap_action:
-                  action: more-info
-              - type: custom:button-card
-                entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
-                name: Freezer
-                show_state: true
-                state_display: |
-                  [[[
-                    return entity.state === 'on' ? 'Door Open' : 'Door Closed';
-                  ]]]
-                icon: |
-                  [[[
-                    return entity.state === 'on' ? 'mdi:snowflake-alert' : 'mdi:snowflake';
-                  ]]]
-                styles:
-                  card:
-                    - height: 150px
-                  icon:
-                    - width: 80px
-                    - color: |
-                        [[[
-                          const door = states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state;
-                          const temp = parseFloat(states['sensor.kitchen_freezer_temp_probe_temperature'].state);
-                          if (door === 'on') return '#ff0000';
-                          if (temp > 15 || temp < -30) return '#ff0000';
-                          if (temp > 10 || temp < -25) return '#ffeb3b';
-                          return '#4caf50';
-                        ]]]
-                  name:
-                    - font-size: 18px
-                    - font-weight: bold
-                  state:
-                    - font-size: 14px
-                tap_action:
-                  action: more-info
-          - type: markdown
-            content: >
-              **✓ Freezer:** OWON THS-317-ET probe installed (-40°F to 200°F range, accurate).
-              Normal operation: -1°F to 8°F. Thresholds: -25°F to 10°F (accommodates supercool mode at -22°F).
-              Third Reality sensor retained for humidity monitoring.
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                entity: sensor.kitchen_fridge_temp_humidity_temperature
-                name: Fridge Temp
-                unit: °F
-                needle: true
-                min: 30
-                max: 50
-                segments:
-                  - from: 30
-                    color: '#ff0000'
-                  - from: 32
-                    color: '#ffeb3b'
-                  - from: 35
-                    color: '#4caf50'
-                  - from: 42
-                    color: '#ffeb3b'
-                  - from: 45
-                    color: '#ff0000'
-              - type: gauge
-                entity: sensor.kitchen_freezer_temp_probe_temperature
-                name: Freezer Temp
-                unit: °F
-                needle: true
-                min: -30
-                max: 20
-                segments:
-                  - from: -30
-                    color: '#ff0000'
-                  - from: -25
-                    color: '#ffeb3b'
-                  - from: -5
-                    color: '#4caf50'
-                  - from: 10
-                    color: '#ffeb3b'
-                  - from: 15
-                    color: '#ff0000'
+          - type: custom:button-card
+            entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
+            name: Fridge
+            show_state: true
+            state_display: |
+              [[[
+                return entity.state === 'on' ? 'Door Open' : 'Door Closed';
+              ]]]
+            icon: |
+              [[[
+                return entity.state === 'on' ? 'mdi:fridge-alert' : 'mdi:fridge';
+              ]]]
+            styles:
+              card:
+                - height: 150px
+              icon:
+                - width: 80px
+                - color: |
+                    [[[
+                      const door = states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state;
+                      const temp = parseFloat(states['sensor.kitchen_fridge_temp_humidity_temperature'].state);
+                      if (door === 'on') return '#ff0000';
+                      if (temp > 45 || temp < 32) return '#ff0000';
+                      if (temp > 42 || temp < 35) return '#ffeb3b';
+                      return '#4caf50';
+                    ]]]
+              name:
+                - font-size: 18px
+                - font-weight: bold
+              state:
+                - font-size: 14px
+            tap_action:
+              action: more-info
+          - type: gauge
+            entity: sensor.kitchen_fridge_temp_humidity_temperature
+            name: Fridge Temp
+            unit: °F
+            needle: true
+            min: 30
+            max: 50
+            segments:
+              - from: 30
+                color: '#ff0000'
+              - from: 32
+                color: '#ffeb3b'
+              - from: 35
+                color: '#4caf50'
+              - from: 42
+                color: '#ffeb3b'
+              - from: 45
+                color: '#ff0000'
           - type: entities
-            title: Current Conditions
+            title: Fridge Status
             show_header_toggle: false
             entities:
               - entity: sensor.kitchen_fridge_temp_humidity_temperature
-                name: Fridge
+                name: Temperature
                 secondary_info: none
               - entity: sensor.kitchen_fridge_temp_humidity_humidity
-                name: Fridge Humidity
+                name: Humidity
                 secondary_info: none
-              - type: divider
+              - entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
+                name: Door
+                secondary_info: last-changed
+      - type: grid
+        title: Freezer Monitoring
+        cards:
+          - type: custom:button-card
+            entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
+            name: Freezer
+            show_state: true
+            state_display: |
+              [[[
+                return entity.state === 'on' ? 'Door Open' : 'Door Closed';
+              ]]]
+            icon: |
+              [[[
+                return entity.state === 'on' ? 'mdi:snowflake-alert' : 'mdi:snowflake';
+              ]]]
+            styles:
+              card:
+                - height: 150px
+              icon:
+                - width: 80px
+                - color: |
+                    [[[
+                      const door = states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state;
+                      const temp = parseFloat(states['sensor.kitchen_freezer_temp_probe_temperature'].state);
+                      if (door === 'on') return '#ff0000';
+                      if (temp > 15 || temp < -30) return '#ff0000';
+                      if (temp > 10 || temp < -25) return '#ffeb3b';
+                      return '#4caf50';
+                    ]]]
+              name:
+                - font-size: 18px
+                - font-weight: bold
+              state:
+                - font-size: 14px
+            tap_action:
+              action: more-info
+          - type: gauge
+            entity: sensor.kitchen_freezer_temp_probe_temperature
+            name: Freezer Temp
+            unit: °F
+            needle: true
+            min: -30
+            max: 20
+            segments:
+              - from: -30
+                color: '#ff0000'
+              - from: -25
+                color: '#ffeb3b'
+              - from: -5
+                color: '#4caf50'
+              - from: 10
+                color: '#ffeb3b'
+              - from: 15
+                color: '#ff0000'
+          - type: markdown
+            content: >
+              **✓ OWON THS-317-ET probe** installed (-40°F to 200°F range).
+              Normal: -1°F to 8°F. Thresholds: -25°F to 10°F.
+              Third Reality sensor for humidity only.
+          - type: entities
+            title: Freezer Status
+            show_header_toggle: false
+            entities:
               - entity: sensor.kitchen_freezer_temp_probe_temperature
-                name: Freezer
+                name: Temperature
                 secondary_info: none
               - entity: sensor.kitchen_freezer_temp_humidity_humidity
-                name: Freezer Humidity
+                name: Humidity
                 secondary_info: none
-              - type: divider
-              - entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
-                name: Fridge Door
-                secondary_info: last-changed
               - entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
-                name: Freezer Door
+                name: Door
                 secondary_info: last-changed
+      - type: grid
+        title: Temperature History
+        cards:
           - type: history-graph
-            title: Temperature History (24 hours)
             hours_to_show: 24
             entities:
               - entity: sensor.kitchen_fridge_temp_humidity_temperature

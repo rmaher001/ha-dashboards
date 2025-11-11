@@ -1744,17 +1744,17 @@ views:
                     - border: none
                     - box-shadow: none
                   icon:
-                    - width: 80px
-                    - height: 80px
+                    - width: 100px
+                    - height: 100px
                     - color: |
                         [[[
-                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                          return entity.state === 'on' ? '#ff0000' : '#66bb6a';
                         ]]]
                   name:
-                    - font-size: 14px
+                    - font-size: 18px
                     - color: |
                         [[[
-                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                          return entity.state === 'on' ? '#ff0000' : '#66bb6a';
                         ]]]
               - type: gauge
                 entity: sensor.kitchen_fridge_temp_humidity_temperature
@@ -1825,17 +1825,17 @@ views:
                     - border: none
                     - box-shadow: none
                   icon:
-                    - width: 80px
-                    - height: 80px
+                    - width: 100px
+                    - height: 100px
                     - color: |
                         [[[
-                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                          return entity.state === 'on' ? '#ff0000' : '#66bb6a';
                         ]]]
                   name:
-                    - font-size: 14px
+                    - font-size: 18px
                     - color: |
                         [[[
-                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                          return entity.state === 'on' ? '#ff0000' : '#66bb6a';
                         ]]]
               - type: gauge
                 entity: sensor.kitchen_freezer_temp_probe_temperature

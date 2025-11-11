@@ -169,15 +169,15 @@ views:
     back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # SECTION 1: KITCHEN LIGHTS
       - type: grid
-        title: Kitchen Lights
         card_mod:
           style: |
             ha-card {
               background: rgba(255, 255, 255, 0.1);
             }
         cards:
+          - type: heading
+            heading: Kitchen Lights
           - type: grid
             columns: 2
             square: false
@@ -224,16 +224,15 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 2: LIVING ROOM LIGHTS
       - type: grid
-        title: Living Room Lights
         card_mod:
           style: |
             ha-card {
               background: rgba(255, 255, 255, 0.1);
             }
         cards:
+          - type: heading
+            heading: Living Room Lights
           - type: grid
             columns: 2
             square: false
@@ -294,16 +293,15 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 3: STAIRS LIGHTS
       - type: grid
-        title: Stairs
         card_mod:
           style: |
             ha-card {
               background: rgba(255, 255, 255, 0.1);
             }
         cards:
+          - type: heading
+            heading: Stairs
           - type: grid
             columns: 2
             square: false
@@ -336,16 +334,15 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 4: CLIMATE
       - type: grid
-        title: Climate & Environment
         card_mod:
           style: |
             ha-card {
               background: rgba(255, 255, 255, 0.1);
             }
         cards:
+          - type: heading
+            heading: Climate & Environment
           - type: grid
             columns: 2
             square: false
@@ -390,16 +387,15 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 5: DOORS & WINDOWS
       - type: grid
-        title: Doors & Windows
         card_mod:
           style: |
             ha-card {
               background: rgba(255, 255, 255, 0.1);
             }
         cards:
+          - type: heading
+            heading: Doors & Windows
           - type: grid
             columns: 2
             square: false
@@ -428,16 +424,15 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 6: MONITORING
       - type: grid
-        title: Monitoring
         card_mod:
           style: |
             ha-card {
               background: rgba(255, 255, 255, 0.1);
             }
         cards:
+          - type: heading
+            heading: Monitoring
           - type: entities
             show_header_toggle: false
             state_color: true
@@ -466,11 +461,13 @@ views:
                     name: Kitchen Sink
                     secondary_info: last-changed
                     icon: mdi:water-alert
-                  - entity: binary_sensor.kitchen_dishwasher_moisture_sensor_water_leak
+                  - entity: >-
+                      binary_sensor.kitchen_dishwasher_moisture_sensor_water_leak
                     name: Dishwasher
                     secondary_info: last-changed
                     icon: mdi:water-alert
-                  - entity: binary_sensor.kitchen_refrigerator_moisture_sensor_water_leak
+                  - entity: >-
+                      binary_sensor.kitchen_refrigerator_moisture_sensor_water_leak
                     name: Refrigerator
                     secondary_info: last-changed
                     icon: mdi:water-alert
@@ -484,8 +481,8 @@ views:
                     state: >-
                       {% set t = (60 - (now().timestamp() -
                       states('input_datetime.livingroom_kitchen_button_pressed_timestamp')
-                      | as_timestamp) / 60) | round(0) %} {% if t < 0 %} 0 {% else
-                      %} {{ t }} {% endif %} minutes
+                      | as_timestamp) / 60) | round(0) %} {% if t < 0 %} 0 {%
+                      else %} {{ t }} {% endif %} minutes
   - type: sections
     title: Master Suite
     path: master-suite
@@ -494,10 +491,10 @@ views:
     back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # SECTION 1: BEDROOM LIGHTS
       - type: grid
-        title: Bedroom Lights
         cards:
+          - type: heading
+            heading: Bedroom Lights
           - type: grid
             columns: 2
             square: false
@@ -641,11 +638,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 2: BATHROOM
       - type: grid
-        title: Bathroom
         cards:
+          - type: heading
+            heading: Bathroom
           - type: grid
             columns: 2
             square: false
@@ -692,11 +688,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 3: CLIMATE & ENVIRONMENT - BEDROOM
       - type: grid
-        title: Climate & Environment - Bedroom
         cards:
+          - type: heading
+            heading: Climate & Environment - Bedroom
           - type: grid
             columns: 2
             square: false
@@ -741,11 +736,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 4: CLIMATE & ENVIRONMENT - BATHROOM
       - type: grid
-        title: Climate & Environment - Bathroom
         cards:
+          - type: heading
+            heading: Climate & Environment - Bathroom
           - type: grid
             columns: 2
             square: false
@@ -780,11 +774,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 5: DOORS & WINDOWS
       - type: grid
-        title: Doors & Windows
         cards:
+          - type: heading
+            heading: Doors & Windows
           - type: grid
             columns: 2
             square: false
@@ -800,18 +793,16 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 6: MEDIA
       - type: grid
-        title: Media
         cards:
+          - type: heading
+            heading: Media
           - type: media-control
             entity: media_player.tv_2
-
-      # SECTION 7: MONITORING
       - type: grid
-        title: Monitoring
         cards:
+          - type: heading
+            heading: Monitoring
           - type: custom:fold-entity-row
             head:
               type: section
@@ -859,10 +850,10 @@ views:
     back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # SECTION 1: LIGHTS
       - type: grid
-        title: Lights
         cards:
+          - type: heading
+            heading: Lights
           - type: grid
             columns: 2
             square: false
@@ -881,11 +872,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 2: CLIMATE & ENVIRONMENT
       - type: grid
-        title: Climate & Environment
         cards:
+          - type: heading
+            heading: Climate & Environment
           - type: grid
             columns: 2
             square: false
@@ -920,11 +910,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 3: MONITORING
       - type: grid
-        title: Monitoring
         cards:
+          - type: heading
+            heading: Monitoring
           - type: custom:fold-entity-row
             head:
               type: section
@@ -947,10 +936,10 @@ views:
     back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # SECTION 1: LIGHTS
       - type: grid
-        title: Lights
         cards:
+          - type: heading
+            heading: Lights
           - type: grid
             columns: 2
             square: false
@@ -983,11 +972,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 2: CLIMATE & ENVIRONMENT
       - type: grid
-        title: Climate & Environment
         cards:
+          - type: heading
+            heading: Climate & Environment
           - type: grid
             columns: 2
             square: false
@@ -1032,11 +1020,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 3: DOORS & WINDOWS
       - type: grid
-        title: Doors & Windows
         cards:
+          - type: heading
+            heading: Doors & Windows
           - type: grid
             columns: 2
             square: false
@@ -1052,11 +1039,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 4: MONITORING
       - type: grid
-        title: Monitoring
         cards:
+          - type: heading
+            heading: Monitoring
           - type: custom:fold-entity-row
             head:
               type: section
@@ -1079,10 +1065,10 @@ views:
     back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # SECTION 1: BATHROOM
       - type: grid
-        title: Bathroom
         cards:
+          - type: heading
+            heading: Bathroom
           - type: grid
             columns: 2
             square: false
@@ -1115,11 +1101,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 2: VANITY
       - type: grid
-        title: Vanity
         cards:
+          - type: heading
+            heading: Vanity
           - type: grid
             columns: 2
             square: false
@@ -1138,11 +1123,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 3: CLIMATE & ENVIRONMENT
       - type: grid
-        title: Climate & Environment
         cards:
+          - type: heading
+            heading: Climate & Environment
           - type: grid
             columns: 2
             square: false
@@ -1167,11 +1151,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 4: MONITORING
       - type: grid
-        title: Monitoring
         cards:
+          - type: heading
+            heading: Monitoring
           - type: custom:fold-entity-row
             head:
               type: section
@@ -1212,10 +1195,10 @@ views:
     back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # SECTION 1: GARAGE DOOR
       - type: grid
-        title: Garage Door
         cards:
+          - type: heading
+            heading: Garage Door
           - type: grid
             columns: 2
             square: false
@@ -1233,11 +1216,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 2: LIGHTS
       - type: grid
-        title: Lights
         cards:
+          - type: heading
+            heading: Lights
           - type: grid
             columns: 2
             square: false
@@ -1296,11 +1278,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 3: CONTROLS
       - type: grid
-        title: Controls
         cards:
+          - type: heading
+            heading: Controls
           - type: button
             entity: input_button.garage_confirm_person_present
             name: Confirm Person Present
@@ -1309,11 +1290,10 @@ views:
               action: toggle
               confirmation:
                 text: Extend garage timeout to 60 minutes?
-
-      # SECTION 4: MONITORING
       - type: grid
-        title: Monitoring
         cards:
+          - type: heading
+            heading: Monitoring
           - type: custom:fold-entity-row
             head:
               type: section
@@ -1324,7 +1304,8 @@ views:
                 name: Opener Motion
                 secondary_info: last-changed
                 icon: mdi:motion-sensor
-              - entity: binary_sensor.garage_camera_smart_occupancy_sensor_occupancysensor
+              - entity: >-
+                  binary_sensor.garage_camera_smart_occupancy_sensor_occupancysensor
                 name: Smart Occupancy
                 secondary_info: last-changed
                 icon: mdi:eye
@@ -1340,10 +1321,10 @@ views:
     back_path: /my-dashboard/default_view
     max_columns: 1
     sections:
-      # SECTION 1: PATIO LIGHTS
       - type: grid
-        title: Patio Lights
         cards:
+          - type: heading
+            heading: Patio Lights
           - type: grid
             columns: 2
             square: false
@@ -1390,11 +1371,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 2: ENTRANCE LIGHTS
       - type: grid
-        title: Entrance Lights
         cards:
+          - type: heading
+            heading: Entrance Lights
           - type: grid
             columns: 2
             square: false
@@ -1465,11 +1445,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 3: LOCK & SECURITY
       - type: grid
-        title: Lock & Security
         cards:
+          - type: heading
+            heading: Lock & Security
           - type: grid
             columns: 2
             square: false
@@ -1486,11 +1465,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 4: CLIMATE & ENVIRONMENT
       - type: grid
-        title: Climate & Environment
         cards:
+          - type: heading
+            heading: Climate & Environment
           - type: grid
             columns: 2
             square: false
@@ -1515,11 +1493,10 @@ views:
                     ha-card {
                       background: rgba(255, 255, 255, 0.1);
                     }
-
-      # SECTION 5: MONITORING
       - type: grid
-        title: Monitoring
         cards:
+          - type: heading
+            heading: Monitoring
           - type: custom:fold-entity-row
             head:
               type: section
@@ -1566,7 +1543,6 @@ views:
     max_columns: 2
     sections:
       - type: grid
-        title: Laundry
         cards:
           - type: vertical-stack
             cards:
@@ -1741,155 +1717,142 @@ views:
                       attribute: dry_level
                       name: Dry Level
                       icon: mdi:air-filter
-      - type: grid
-        title: Fridge Monitoring
-        cards:
-          - type: custom:button-card
-            entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
-            name: Fridge
-            show_state: true
-            state_display: |
-              [[[
-                return entity.state === 'on' ? 'Door Open' : 'Door Closed';
-              ]]]
-            icon: |
-              [[[
-                return entity.state === 'on' ? 'mdi:fridge-alert' : 'mdi:fridge';
-              ]]]
-            styles:
-              card:
-                - height: 150px
-              icon:
-                - width: 80px
-                - color: |
-                    [[[
-                      const door = states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state;
-                      const temp = parseFloat(states['sensor.kitchen_fridge_temp_humidity_temperature'].state);
-                      if (door === 'on') return '#ff0000';
-                      if (temp > 45 || temp < 32) return '#ff0000';
-                      if (temp > 42 || temp < 35) return '#ffeb3b';
-                      return '#4caf50';
-                    ]]]
-              name:
-                - font-size: 18px
-                - font-weight: bold
-              state:
-                - font-size: 14px
-            tap_action:
-              action: more-info
-          - type: gauge
-            entity: sensor.kitchen_fridge_temp_humidity_temperature
-            name: Fridge Temp
-            unit: °F
-            needle: true
-            min: 30
-            max: 50
-            segments:
-              - from: 30
-                color: '#ff0000'
-              - from: 32
-                color: '#ffeb3b'
-              - from: 35
-                color: '#4caf50'
-              - from: 42
-                color: '#ffeb3b'
-              - from: 45
-                color: '#ff0000'
-          - type: entities
-            title: Fridge Status
-            show_header_toggle: false
-            entities:
-              - entity: sensor.kitchen_fridge_temp_humidity_temperature
-                name: Temperature
-                secondary_info: none
-              - entity: sensor.kitchen_fridge_temp_humidity_humidity
-                name: Humidity
-                secondary_info: none
-              - entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
-                name: Door
-                secondary_info: last-changed
-      - type: grid
-        title: Freezer Monitoring
-        cards:
-          - type: custom:button-card
-            entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
-            name: Freezer
-            show_state: true
-            state_display: |
-              [[[
-                return entity.state === 'on' ? 'Door Open' : 'Door Closed';
-              ]]]
-            icon: |
-              [[[
-                return entity.state === 'on' ? 'mdi:snowflake-alert' : 'mdi:snowflake';
-              ]]]
-            styles:
-              card:
-                - height: 150px
-              icon:
-                - width: 80px
-                - color: |
-                    [[[
-                      const door = states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state;
-                      const temp = parseFloat(states['sensor.kitchen_freezer_temp_probe_temperature'].state);
-                      if (door === 'on') return '#ff0000';
-                      if (temp > 15 || temp < -30) return '#ff0000';
-                      if (temp > 10 || temp < -25) return '#ffeb3b';
-                      return '#4caf50';
-                    ]]]
-              name:
-                - font-size: 18px
-                - font-weight: bold
-              state:
-                - font-size: 14px
-            tap_action:
-              action: more-info
-          - type: gauge
-            entity: sensor.kitchen_freezer_temp_probe_temperature
-            name: Freezer Temp
-            unit: °F
-            needle: true
-            min: -30
-            max: 20
-            segments:
-              - from: -30
-                color: '#ff0000'
-              - from: -25
-                color: '#ffeb3b'
-              - from: -5
-                color: '#4caf50'
-              - from: 10
-                color: '#ffeb3b'
-              - from: 15
-                color: '#ff0000'
-          - type: markdown
-            content: >
-              **✓ OWON THS-317-ET probe** installed (-40°F to 200°F range).
-              Normal: -1°F to 8°F. Thresholds: -25°F to 10°F.
-              Third Reality sensor for humidity only.
-          - type: entities
-            title: Freezer Status
-            show_header_toggle: false
-            entities:
-              - entity: sensor.kitchen_freezer_temp_probe_temperature
-                name: Temperature
-                secondary_info: none
-              - entity: sensor.kitchen_freezer_temp_humidity_humidity
-                name: Humidity
-                secondary_info: none
-              - entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
-                name: Door
-                secondary_info: last-changed
-      - type: grid
-        title: Temperature History
-        cards:
-          - type: history-graph
-            hours_to_show: 24
-            entities:
-              - entity: sensor.kitchen_fridge_temp_humidity_temperature
-                name: Fridge
-              - entity: sensor.kitchen_freezer_temp_probe_temperature
-                name: Freezer
+          - type: picture-elements
+            image: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==
+            style: |
+              ha-card {
+                height: 200px !important;
+                background-color: rgba(0,0,0,0.3) !important;
+              }
+            elements:
+              - type: state-icon
+                entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
+                icon: mdi:fridge
+                style:
+                  left: 15%
+                  top: 45%
+                  '--mdc-icon-size': 80px
+                  color: >
+                    ${states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state === 'on' ? '#ff0000' : '#4caf50'}
+              - type: state-label
+                entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
+                style:
+                  left: 15%
+                  top: 75%
+                  font-size: 14px
+                  color: >
+                    ${states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state === 'on' ? '#ff0000' : '#4caf50'}
+                prefix: ''
+                attribute: >
+                  ${states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state === 'on' ? 'Open' : 'Closed'}
+              - type: custom:hui-element
+                card_type: gauge
+                entity: sensor.kitchen_fridge_temp_humidity_temperature
+                name: ' '
+                unit: '°F'
+                needle: true
+                min: 30
+                max: 50
+                segments:
+                  - from: 30
+                    color: '#ff0000'
+                  - from: 35
+                    color: '#4caf50'
+                  - from: 42
+                    color: '#ff0000'
+                style:
+                  left: 50%
+                  top: 50%
+                  width: 30%
+                  transform: translate(-50%, -50%)
+              - type: custom:hui-element
+                card_type: gauge
+                entity: sensor.kitchen_fridge_temp_humidity_humidity
+                name: ' '
+                unit: '%'
+                needle: true
+                min: 0
+                max: 100
+                segments:
+                  - from: 0
+                    color: '#ff0000'
+                  - from: 30
+                    color: '#4caf50'
+                  - from: 70
+                    color: '#ff0000'
+                style:
+                  left: 80%
+                  top: 50%
+                  width: 30%
+                  transform: translate(-50%, -50%)
+          - type: picture-elements
+            image: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==
+            style: |
+              ha-card {
+                height: 200px !important;
+                background-color: rgba(0,0,0,0.3) !important;
+              }
+            elements:
+              - type: state-icon
+                entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
+                icon: mdi:snowflake
+                style:
+                  left: 15%
+                  top: 45%
+                  '--mdc-icon-size': 80px
+                  color: >
+                    ${states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state === 'on' ? '#ff0000' : '#4caf50'}
+              - type: state-label
+                entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
+                style:
+                  left: 15%
+                  top: 75%
+                  font-size: 14px
+                  color: >
+                    ${states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state === 'on' ? '#ff0000' : '#4caf50'}
+                prefix: ''
+                attribute: >
+                  ${states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state === 'on' ? 'Open' : 'Closed'}
+              - type: custom:hui-element
+                card_type: gauge
+                entity: sensor.kitchen_freezer_temp_probe_temperature
+                name: ' '
+                unit: '°F'
+                needle: true
+                min: -30
+                max: 20
+                segments:
+                  - from: -30
+                    color: '#ff0000'
+                  - from: -5
+                    color: '#4caf50'
+                  - from: 10
+                    color: '#ff0000'
+                style:
+                  left: 50%
+                  top: 50%
+                  width: 30%
+                  transform: translate(-50%, -50%)
+              - type: custom:hui-element
+                card_type: gauge
+                entity: sensor.kitchen_freezer_temp_humidity_humidity
+                name: ' '
+                unit: '%'
+                needle: true
+                min: 0
+                max: 100
+                segments:
+                  - from: 0
+                    color: '#ff0000'
+                  - from: 30
+                    color: '#4caf50'
+                  - from: 70
+                    color: '#ff0000'
+                style:
+                  left: 80%
+                  top: 50%
+                  width: 30%
+                  transform: translate(-50%, -50%)
   - type: sections
     title: Plants
     path: plants
@@ -2096,8 +2059,9 @@ views:
     max_columns: 2
     sections:
       - type: grid
-        title: Access Control
         cards:
+          - type: heading
+            heading: Access Control
           - type: grid
             columns: 2
             square: false
@@ -2142,18 +2106,16 @@ views:
                 secondary_info: last-changed
                 icon: mdi:window-closed
       - type: grid
-        title: Security System
         cards:
+          - type: heading
+            heading: Security System
           - type: tile
             entity: input_select.home_security_mode
             name: Security Mode
             icon: mdi:shield-home
             color: >-
-              {% if is_state('input_select.home_security_mode', 'Away') %}
-              red
-              {% else %}
-              green
-              {% endif %}
+              {% if is_state('input_select.home_security_mode', 'Away') %} red
+              {% else %} green {% endif %}
             features:
               - type: select-options
           - type: entities
@@ -2165,7 +2127,9 @@ views:
                 entity: input_datetime.home_security_last_analysis
                 name: Last Analysis
                 state: >-
-                  {{ relative_time(states.input_datetime.home_security_last_analysis.last_changed) }} ago
+                  {{
+                  relative_time(states.input_datetime.home_security_last_analysis.last_changed)
+                  }} ago
                 icon: mdi:clock-check
                 tap_action:
                   action: none
@@ -2182,4 +2146,3 @@ views:
                 name: Confidence Threshold
               - entity: input_number.home_security_warning_rate_limit
                 name: Warning Rate Limit
-

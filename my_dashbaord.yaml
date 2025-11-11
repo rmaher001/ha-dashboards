@@ -1800,10 +1800,10 @@ views:
                     - color: |
                         [[[
                           const door = states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state;
-                          const temp = parseFloat(states['sensor.kitchen_freezer_temp_humidity_temperature'].state);
+                          const temp = parseFloat(states['sensor.kitchen_freezer_temp_probe_temperature'].state);
                           if (door === 'on') return '#ff0000';
-                          if (temp > 18 || temp < 7) return '#ff0000';
-                          if (temp > 15 || temp < 10) return '#ffeb3b';
+                          if (temp > 15 || temp < -30) return '#ff0000';
+                          if (temp > 10 || temp < -25) return '#ffeb3b';
                           return '#4caf50';
                         ]]]
                   name:
@@ -1813,6 +1813,11 @@ views:
                     - font-size: 14px
                 tap_action:
                   action: more-info
+          - type: markdown
+            content: >
+              **✓ Freezer:** OWON THS-317-ET probe installed (-40°F to 200°F range, accurate).
+              Normal operation: -1°F to 8°F. Thresholds: -25°F to 10°F (accommodates supercool mode at -22°F).
+              Third Reality sensor retained for humidity monitoring.
           - type: horizontal-stack
             cards:
               - type: gauge
@@ -1834,22 +1839,22 @@ views:
                   - from: 45
                     color: '#ff0000'
               - type: gauge
-                entity: sensor.kitchen_freezer_temp_humidity_temperature
+                entity: sensor.kitchen_freezer_temp_probe_temperature
                 name: Freezer Temp
                 unit: °F
                 needle: true
-                min: 0
-                max: 30
+                min: -30
+                max: 20
                 segments:
-                  - from: 0
+                  - from: -30
                     color: '#ff0000'
-                  - from: 7
+                  - from: -25
                     color: '#ffeb3b'
-                  - from: 10
+                  - from: -5
                     color: '#4caf50'
-                  - from: 15
+                  - from: 10
                     color: '#ffeb3b'
-                  - from: 18
+                  - from: 15
                     color: '#ff0000'
           - type: entities
             title: Current Conditions
@@ -1862,7 +1867,7 @@ views:
                 name: Fridge Humidity
                 secondary_info: none
               - type: divider
-              - entity: sensor.kitchen_freezer_temp_humidity_temperature
+              - entity: sensor.kitchen_freezer_temp_probe_temperature
                 name: Freezer
                 secondary_info: none
               - entity: sensor.kitchen_freezer_temp_humidity_humidity
@@ -1881,7 +1886,7 @@ views:
             entities:
               - entity: sensor.kitchen_fridge_temp_humidity_temperature
                 name: Fridge
-              - entity: sensor.kitchen_freezer_temp_humidity_temperature
+              - entity: sensor.kitchen_freezer_temp_probe_temperature
                 name: Freezer
   - type: sections
     title: Plants

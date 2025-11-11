@@ -1734,17 +1734,34 @@ views:
                   '--mdc-icon-size': 80px
                   color: >
                     ${states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state === 'on' ? '#ff0000' : '#4caf50'}
-              - type: state-label
-                entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
-                style:
-                  left: 15%
-                  top: 75%
-                  font-size: 14px
-                  color: >
-                    ${states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state === 'on' ? '#ff0000' : '#4caf50'}
-                prefix: ''
-                attribute: >
-                  ${states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state === 'on' ? 'Open' : 'Closed'}
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
+                    state: 'on'
+                elements:
+                  - type: state-label
+                    entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
+                    style:
+                      left: 15%
+                      top: 75%
+                      font-size: 14px
+                      color: '#ff0000'
+                    prefix: 'Open'
+                    attribute: ''
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
+                    state: 'off'
+                elements:
+                  - type: state-label
+                    entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
+                    style:
+                      left: 15%
+                      top: 75%
+                      font-size: 14px
+                      color: '#4caf50'
+                    prefix: 'Closed'
+                    attribute: ''
               - type: custom:hui-element
                 card_type: gauge
                 entity: sensor.kitchen_fridge_temp_humidity_temperature
@@ -1802,17 +1819,34 @@ views:
                   '--mdc-icon-size': 80px
                   color: >
                     ${states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state === 'on' ? '#ff0000' : '#4caf50'}
-              - type: state-label
-                entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
-                style:
-                  left: 15%
-                  top: 75%
-                  font-size: 14px
-                  color: >
-                    ${states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state === 'on' ? '#ff0000' : '#4caf50'}
-                prefix: ''
-                attribute: >
-                  ${states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state === 'on' ? 'Open' : 'Closed'}
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
+                    state: 'on'
+                elements:
+                  - type: state-label
+                    entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
+                    style:
+                      left: 15%
+                      top: 75%
+                      font-size: 14px
+                      color: '#ff0000'
+                    prefix: 'Open'
+                    attribute: ''
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
+                    state: 'off'
+                elements:
+                  - type: state-label
+                    entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
+                    style:
+                      left: 15%
+                      top: 75%
+                      font-size: 14px
+                      color: '#4caf50'
+                    prefix: 'Closed'
+                    attribute: ''
               - type: custom:hui-element
                 card_type: gauge
                 entity: sensor.kitchen_freezer_temp_probe_temperature

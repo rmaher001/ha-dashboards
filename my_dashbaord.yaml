@@ -1717,53 +1717,44 @@ views:
                       attribute: dry_level
                       name: Dry Level
                       icon: mdi:air-filter
-          - type: picture-elements
-            image: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==
-            style: |
-              ha-card {
-                height: 200px !important;
-                background-color: rgba(0,0,0,0.3) !important;
-              }
-            elements:
-              - type: state-icon
+          - type: custom:stack-in-card
+            mode: horizontal
+            card_mod:
+              style: |
+                ha-card {
+                  height: 200px;
+                  background-color: rgba(0,0,0,0.3);
+                }
+            cards:
+              - type: custom:button-card
                 entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
                 icon: mdi:fridge
-                style:
-                  left: 15%
-                  top: 45%
-                  '--mdc-icon-size': 80px
-                  color: >
-                    ${states['binary_sensor.kitchen_fridge_door_contact_sensor_intrusion'].state === 'on' ? '#ff0000' : '#4caf50'}
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
-                    state: 'on'
-                elements:
-                  - type: state-label
-                    entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
-                    style:
-                      left: 15%
-                      top: 75%
-                      font-size: 14px
-                      color: '#ff0000'
-                    prefix: 'Open'
-                    attribute: ''
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
-                    state: 'off'
-                elements:
-                  - type: state-label
-                    entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
-                    style:
-                      left: 15%
-                      top: 75%
-                      font-size: 14px
-                      color: '#4caf50'
-                    prefix: 'Closed'
-                    attribute: ''
-              - type: custom:hui-element
-                card_type: gauge
+                name: |
+                  [[[
+                    return entity.state === 'on' ? 'Open' : 'Closed';
+                  ]]]
+                layout: vertical
+                show_state: false
+                show_name: true
+                styles:
+                  card:
+                    - background: transparent
+                    - border: none
+                    - box-shadow: none
+                  icon:
+                    - width: 80px
+                    - height: 80px
+                    - color: |
+                        [[[
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 14px
+                    - color: |
+                        [[[
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+              - type: gauge
                 entity: sensor.kitchen_fridge_temp_humidity_temperature
                 name: ' '
                 unit: '°F'
@@ -1777,13 +1768,14 @@ views:
                     color: '#4caf50'
                   - from: 42
                     color: '#ff0000'
-                style:
-                  left: 50%
-                  top: 50%
-                  width: 30%
-                  transform: translate(-50%, -50%)
-              - type: custom:hui-element
-                card_type: gauge
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: transparent !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                    }
+              - type: gauge
                 entity: sensor.kitchen_fridge_temp_humidity_humidity
                 name: ' '
                 unit: '%'
@@ -1797,58 +1789,51 @@ views:
                     color: '#4caf50'
                   - from: 70
                     color: '#ff0000'
-                style:
-                  left: 80%
-                  top: 50%
-                  width: 30%
-                  transform: translate(-50%, -50%)
-          - type: picture-elements
-            image: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==
-            style: |
-              ha-card {
-                height: 200px !important;
-                background-color: rgba(0,0,0,0.3) !important;
-              }
-            elements:
-              - type: state-icon
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: transparent !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                    }
+          - type: custom:stack-in-card
+            mode: horizontal
+            card_mod:
+              style: |
+                ha-card {
+                  height: 200px;
+                  background-color: rgba(0,0,0,0.3);
+                }
+            cards:
+              - type: custom:button-card
                 entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
                 icon: mdi:snowflake
-                style:
-                  left: 15%
-                  top: 45%
-                  '--mdc-icon-size': 80px
-                  color: >
-                    ${states['binary_sensor.kitchen_freezer_door_contact_sensor_intrusion'].state === 'on' ? '#ff0000' : '#4caf50'}
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
-                    state: 'on'
-                elements:
-                  - type: state-label
-                    entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
-                    style:
-                      left: 15%
-                      top: 75%
-                      font-size: 14px
-                      color: '#ff0000'
-                    prefix: 'Open'
-                    attribute: ''
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
-                    state: 'off'
-                elements:
-                  - type: state-label
-                    entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
-                    style:
-                      left: 15%
-                      top: 75%
-                      font-size: 14px
-                      color: '#4caf50'
-                    prefix: 'Closed'
-                    attribute: ''
-              - type: custom:hui-element
-                card_type: gauge
+                name: |
+                  [[[
+                    return entity.state === 'on' ? 'Open' : 'Closed';
+                  ]]]
+                layout: vertical
+                show_state: false
+                show_name: true
+                styles:
+                  card:
+                    - background: transparent
+                    - border: none
+                    - box-shadow: none
+                  icon:
+                    - width: 80px
+                    - height: 80px
+                    - color: |
+                        [[[
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 14px
+                    - color: |
+                        [[[
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+              - type: gauge
                 entity: sensor.kitchen_freezer_temp_probe_temperature
                 name: ' '
                 unit: '°F'
@@ -1862,13 +1847,14 @@ views:
                     color: '#4caf50'
                   - from: 10
                     color: '#ff0000'
-                style:
-                  left: 50%
-                  top: 50%
-                  width: 30%
-                  transform: translate(-50%, -50%)
-              - type: custom:hui-element
-                card_type: gauge
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: transparent !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                    }
+              - type: gauge
                 entity: sensor.kitchen_freezer_temp_humidity_humidity
                 name: ' '
                 unit: '%'
@@ -1882,11 +1868,13 @@ views:
                     color: '#4caf50'
                   - from: 70
                     color: '#ff0000'
-                style:
-                  left: 80%
-                  top: 50%
-                  width: 30%
-                  transform: translate(-50%, -50%)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: transparent !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                    }
   - type: sections
     title: Plants
     path: plants

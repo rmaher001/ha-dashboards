@@ -1978,72 +1978,77 @@ views:
     sections:
       - type: grid
         cards:
+          - type: custom:button-card
+            entity: sensor.water_softener_salt_status
+            name: SALT STATUS
+            show_state: true
+            show_name: true
+            layout: vertical
+            styles:
+              card:
+                - height: 150px
+                - background: |
+                    [[[
+                      return entity.state === 'Good' ? 'rgba(102, 187, 106, 0.2)' : 'rgba(255, 0, 0, 0.2)';
+                    ]]]
+              icon:
+                - width: 60px
+                - height: 60px
+                - color: |
+                    [[[
+                      return entity.state === 'Good' ? '#66bb6a' : '#ff0000';
+                    ]]]
+              name:
+                - font-size: 18px
+                - font-weight: bold
+                - color: gray
+                - margin-bottom: 10px
+              state:
+                - font-size: 48px
+                - font-weight: bold
+                - color: |
+                    [[[
+                      return entity.state === 'Good' ? '#66bb6a' : '#ff0000';
+                    ]]]
+            icon: |
+              [[[
+                return entity.state === 'Good' ? 'mdi:check-circle' : 'mdi:alert-circle';
+              ]]]
+
           - type: entities
-            title: Water Softener Status
+            title: Sensors
             show_header_toggle: false
-            card_mod:
-              style: |
-                ha-card {
-                  font-size: 150%;
-                }
+            state_color: true
             entities:
-              - entity: sensor.water_softener_salt_status
-                name: Status
-                icon: mdi:water-opacity
-              - entity: sensor.water_softener_salt_level
-                name: Salt Level
-                icon: mdi:percent
-          - type: gauge
-            entity: sensor.water_softener_salt_level
-            name: Salt Level
-            unit: '%'
-            needle: true
-            severity:
-              green: 60
-              yellow: 40
-              red: 0
-            segments:
-              - from: 0
-                color: '#ff0000'
-              - from: 20
-                color: '#ff6600'
-              - from: 40
-                color: '#ffd700'
-              - from: 60
-                color: '#00c853'
-          - type: markdown
-            content: >
-              🔴 <20% Critical | 🟠 20-40% Low | 🟡 40-60% Moderate | 🟢 60%+
-              Good
-          - type: conditional
-            conditions:
+              - entity: sensor.water_softener_distance_to_salt
+                name: Distance to Salt
+                icon: mdi:arrow-expand-vertical
+
+              - entity: binary_sensor.water_softener_regeneration_cycle_active
+                name: Regeneration Cycle
+                icon: mdi:water-sync
+
               - entity: binary_sensor.water_softener_sensor_out_of_range
-                state: 'on'
-            card:
-              type: custom:mushroom-template-card
-              primary: Sensor Error!
-              secondary: TOF sensor out of range - check for obstructions
-              icon: mdi:alert-circle
-              icon_color: red
-              fill_container: true
-              layout: horizontal
+                name: Sensor Health
+                icon: mdi:alarm-light
+
+              - entity: sensor.water_softener_wifi_signal
+                name: WiFi Signal
+                icon: mdi:wifi
+
           - type: custom:apexcharts-card
             header:
               show: true
-              title: Salt Level History (7 Days)
+              title: Distance History (30 Days)
               show_states: true
               colorize_states: true
-            graph_span: 10d
-            yaxis:
-              - min: 0
-                max: 100
-                apex_config:
-                  tickAmount: 5
-                  labels:
-                    formatter: |
-                      EVAL:function(value) {
-                        return value.toFixed(0) + '%';
-                      }
+            graph_span: 30d
+            span:
+              start: day
+              offset: -30d
+            now:
+              show: true
+              label: Now
             apex_config:
               chart:
                 height: 280px
@@ -2063,43 +2068,56 @@ views:
                 labels:
                   datetimeUTC: false
                   datetimeFormatter:
-                    year: yyyy
-                    month: MMM yyyy
-                    day: MMM dd
-                    hour: HH:mm
-                    minute: HH:mm
-                  tickPlacement: 'on'
+                    year: 'yyyy'
+                    month: 'MMM yyyy'
+                    day: 'MMM dd'
+                    hour: 'HH:mm'
+                    minute: 'HH:mm'
+                tickPlacement: on
               tooltip:
                 x:
-                  format: MMM dd HH:mm
+                  format: 'MMM dd HH:mm'
+            yaxis:
+              - id: distance
+                apex_config:
+                  reversed: true
+                  tickAmount: 5
+                  labels:
+                    formatter: |
+                      EVAL:function(value) {
+                        return value.toFixed(1) + ' cm';
+                      }
             series:
-              - entity: sensor.water_softener_salt_level
-                name: Salt Level
-                stroke_width: 1
+              - entity: sensor.water_softener_distance_to_salt
+                name: Distance
+                stroke_width: 2
+                yaxis_id: distance
                 type: line
-                float_precision: 0
-                color_threshold:
-                  - value: 0
-                    color: '#ff0000'
-                  - value: 20
-                    color: '#ff6600'
-                  - value: 40
-                    color: '#ffd700'
-                  - value: 60
-                    color: '#00c853'
+                color: '#03A9F4'
+                show:
+                  in_header: true
+                  legend_value: true
+
           - type: entities
-            title: System Info
+            title: System Information
             show_header_toggle: false
             entities:
               - entity: sensor.water_softener_firmware_version
                 name: Firmware Version
                 icon: mdi:chip
-              - entity: input_datetime.water_softener_last_refill
-                name: Last Refill
-                icon: mdi:calendar-check
-              - entity: input_datetime.water_softener_last_notification
-                name: Last Alert
-                icon: mdi:bell-alert
+
+              - type: custom:template-entity-row
+                entity: input_datetime.water_softener_last_notification
+                name: Last Alert Sent
+                icon: mdi:message-alert
+                state: >-
+                  {{ as_timestamp(states('input_datetime.water_softener_last_notification')) | timestamp_custom('%b %d, %Y %-I:%M %p') }}
+
+              - type: attribute
+                entity: binary_sensor.water_softener_regeneration_cycle_active
+                attribute: last_changed
+                name: Last Regeneration
+                format: relative
   - type: sections
     title: Entry & Security
     path: entry-security

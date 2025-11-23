@@ -358,7 +358,7 @@ views:
                       background: rgba(255, 255, 255, 0.1);
                     }
               - type: tile
-                entity: sensor.living_room_presence_2_dps310_temperature
+                entity: sensor.living_room_presence_dps310_temperature
                 name: Living Room Temp
                 icon: mdi:thermometer
                 color: red
@@ -368,7 +368,7 @@ views:
                       background: rgba(255, 255, 255, 0.1);
                     }
               - type: tile
-                entity: sensor.living_room_presence_2_co2
+                entity: sensor.living_room_presence_co2
                 name: CO2
                 icon: mdi:molecule-co2
                 color: green
@@ -1304,14 +1304,52 @@ views:
         cards:
           - type: heading
             heading: Controls
-          - type: button
-            entity: input_button.garage_confirm_person_present
-            name: Confirm Person Present
-            icon: mdi:account-check
-            tap_action:
-              action: toggle
-              confirmation:
-                text: Extend garage timeout to 60 minutes?
+          - type: entities
+            entities:
+              - entity: input_boolean.garage_manual_override
+                name: Manual Override
+                icon: mdi:account-check
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: input_boolean.garage_manual_override
+                    state: "off"
+                row:
+                  entity: input_number.garage_manual_override_timeout
+                  name: Override Timeout
+                  icon: mdi:timer-lock
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: input_boolean.garage_manual_override
+                    state: "on"
+                row:
+                  type: custom:template-entity-row
+                  entity: input_datetime.garage_manual_override_until
+                  name: Time Remaining
+                  icon: mdi:timer-lock
+                  state: >-
+                    {% set until = states('input_datetime.garage_manual_override_until') %}
+                    {% if until not in ['unknown', 'unavailable', ''] %}
+                      {% set until_ts = as_timestamp(until) | default(0) %}
+                      {% set now_ts = now().timestamp() %}
+                      {% if until_ts > now_ts %}
+                        {% set remaining_minutes = ((until_ts - now_ts) / 60) | int %}
+                        {% set hours = (remaining_minutes / 60) | int %}
+                        {% set minutes = remaining_minutes % 60 %}
+                        {% if hours > 0 and minutes > 0 %}
+                          {{ hours }} hours and {{ minutes }} minutes left
+                        {% elif hours > 0 %}
+                          {{ hours }} hours left
+                        {% else %}
+                          {{ minutes }} minutes left
+                        {% endif %}
+                      {% else %}
+                        Expired
+                      {% endif %}
+                    {% else %}
+                      Not set
+                    {% endif %}
       - type: grid
         cards:
           - type: heading
@@ -2113,11 +2151,12 @@ views:
                 state: >-
                   {{ as_timestamp(states('input_datetime.water_softener_last_notification')) | timestamp_custom('%b %d, %Y %-I:%M %p') }}
 
-              - type: attribute
-                entity: binary_sensor.water_softener_regeneration_cycle_active
-                attribute: last_changed
+              - type: custom:template-entity-row
+                entity: input_datetime.water_softener_last_regeneration
                 name: Last Regeneration
-                format: relative
+                icon: mdi:water-sync
+                state: >-
+                  {{ as_timestamp(states('input_datetime.water_softener_last_regeneration')) | timestamp_custom('%b %d, %Y %-I:%M %p') }}
   - type: sections
     title: Entry & Security
     path: entry-security

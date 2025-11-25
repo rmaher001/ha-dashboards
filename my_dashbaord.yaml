@@ -827,6 +827,12 @@ views:
               - entity: binary_sensor.master_bathroom_humidity_target
                 name: Humidity Target
                 secondary_info: last-changed
+              - entity: sensor.master_bathroom_temp_humidity_2_humidity
+                name: Bathroom Humidity
+                secondary_info: last-changed
+              - entity: climate.home_downstairs
+                name: Downstairs Target Humidity
+                secondary_info: last-changed
               - entity: timer.master_bathroom_fan_timer
                 name: Fan Timer
                 secondary_info: last-changed
@@ -1177,6 +1183,12 @@ views:
             entities:
               - entity: binary_sensor.upstairs_bathroom_humidity_target
                 name: Humidity Target
+                secondary_info: last-changed
+              - entity: sensor.upstairs_bathroom_temp_humidity_2_humidity
+                name: Bathroom Humidity
+                secondary_info: last-changed
+              - entity: climate.home_upstairs
+                name: Upstairs Target Humidity
                 secondary_info: last-changed
               - entity: sensor.upstairs_bathroom_derivative_humidity
                 name: Derivative Humidity

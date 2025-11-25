@@ -378,7 +378,7 @@ views:
                       background: rgba(255, 255, 255, 0.1);
                     }
               - type: tile
-                entity: sensor.filtered_living_room_illuminance
+                entity: sensor.living_room_presence_ltr390_light
                 name: Illuminance
                 icon: mdi:brightness-6
                 color: yellow

@@ -2094,8 +2094,7 @@ views:
               colorize_states: true
             graph_span: 30d
             span:
-              start: day
-              offset: -30d
+              end: now
             now:
               show: true
               label: Now

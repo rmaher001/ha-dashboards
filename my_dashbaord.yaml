@@ -2086,66 +2086,14 @@ views:
                 name: WiFi Signal
                 icon: mdi:wifi
 
-          - type: custom:apexcharts-card
-            header:
-              show: true
-              title: Distance History (30 Days)
-              show_states: true
-              colorize_states: true
-            graph_span: 30d
-            span:
-              end: now
-            now:
-              show: true
-              label: Now
-            apex_config:
-              chart:
-                height: 280px
-                zoom:
-                  enabled: true
-                  type: x
-                  autoScaleYaxis: true
-                toolbar:
-                  show: true
-                  tools:
-                    zoom: true
-                    zoomin: true
-                    zoomout: true
-                    pan: true
-                    reset: true
-              xaxis:
-                labels:
-                  datetimeUTC: false
-                  datetimeFormatter:
-                    year: 'yyyy'
-                    month: 'MMM yyyy'
-                    day: 'MMM dd'
-                    hour: 'HH:mm'
-                    minute: 'HH:mm'
-                tickPlacement: on
-              tooltip:
-                x:
-                  format: 'MMM dd HH:mm'
-            yaxis:
-              - id: distance
-                apex_config:
-                  reversed: true
-                  tickAmount: 5
-                  labels:
-                    formatter: |
-                      EVAL:function(value) {
-                        return value.toFixed(1) + ' cm';
-                      }
-            series:
-              - entity: sensor.water_softener_distance_to_salt
-                name: Distance
-                stroke_width: 2
-                yaxis_id: distance
-                type: line
-                color: '#03A9F4'
-                show:
-                  in_header: true
-                  legend_value: true
+          - type: statistics-graph
+            title: Distance to Salt
+            entities:
+              - sensor.water_softener_distance_to_salt
+            stat_types:
+              - mean
+            days_to_show: 60
+            chart_type: line
 
           - type: entities
             title: System Information

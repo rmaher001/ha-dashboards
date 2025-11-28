@@ -358,7 +358,7 @@ views:
                       background: rgba(255, 255, 255, 0.1);
                     }
               - type: tile
-                entity: sensor.living_room_presence_dps310_temperature
+                entity: sensor.living_room_presence_2_dps310_temperature
                 name: Living Room Temp
                 icon: mdi:thermometer
                 color: red
@@ -368,7 +368,7 @@ views:
                       background: rgba(255, 255, 255, 0.1);
                     }
               - type: tile
-                entity: sensor.living_room_presence_co2
+                entity: sensor.living_room_presence_2_co2
                 name: CO2
                 icon: mdi:molecule-co2
                 color: green
@@ -378,7 +378,7 @@ views:
                       background: rgba(255, 255, 255, 0.1);
                     }
               - type: tile
-                entity: sensor.living_room_presence_ltr390_light
+                entity: sensor.living_room_presence_2_ltr390_light
                 name: Illuminance
                 icon: mdi:brightness-6
                 color: yellow
@@ -448,7 +448,7 @@ views:
                     name: Kitchen Motion
                     secondary_info: last-changed
                     icon: mdi:motion-sensor
-                  - entity: binary_sensor.living_room_presence_sensors
+                  - entity: binary_sensor.living_room_presence_2_sensors
                     name: Living Room Presence
                     secondary_info: last-changed
                     icon: mdi:eye

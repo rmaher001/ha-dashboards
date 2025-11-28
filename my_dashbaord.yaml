@@ -837,6 +837,10 @@ views:
                 name: Fan Timer
                 secondary_info: last-changed
                 icon: mdi:timer
+              - entity: timer.master_bathroom_lights_timer
+                name: Lights Timer
+                secondary_info: last-changed
+                icon: mdi:timer-outline
               - entity: binary_sensor.master_bathroom_moisture_sensor_water_leak
                 name: Bathroom Moisture
                 secondary_info: last-changed

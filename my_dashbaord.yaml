@@ -1242,11 +1242,13 @@ views:
             square: false
             cards:
               - type: tile
-                entity: cover.group_garage_door_opener_door
+                entity: cover.garage_door_opener_door
                 name: Door
                 icon: mdi:garage
                 tap_action:
                   action: toggle
+                  confirmation:
+                    text: Open/close garage door?
                 hold_action:
                   action: more-info
                 card_mod:
@@ -2137,7 +2139,7 @@ views:
             square: false
             cards:
               - type: tile
-                entity: cover.group_garage_door_opener_door
+                entity: cover.garage_door_opener_door
                 name: Garage Door
                 icon: mdi:garage
                 tap_action:

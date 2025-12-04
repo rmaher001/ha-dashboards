@@ -98,11 +98,11 @@ views:
               columns: 4
               rows: 3
           - type: button
-            name: Water Softener
+            name: Water
             icon: mdi:water
             tap_action:
               action: navigate
-              navigation_path: /my-dashboard/water-softener
+              navigation_path: /my-dashboard/water
             grid_options:
               columns: 4
               rows: 3
@@ -2025,8 +2025,8 @@ views:
               - illuminance
             display_type: full
   - type: sections
-    title: Water Softener
-    path: water-softener
+    title: Water
+    path: water
     icon: mdi:water
     subview: true
     back_path: /my-dashboard/default_view
@@ -2122,6 +2122,441 @@ views:
                 icon: mdi:water-sync
                 state: >-
                   {{ as_timestamp(states('input_datetime.water_softener_last_regeneration')) | timestamp_custom('%b %d, %Y %-I:%M %p') }}
+      - type: grid
+        cards:
+          - type: heading
+            heading: Leak Detection
+          - type: markdown
+            content: |
+              {% set active_count = states.binary_sensor
+                 | selectattr('entity_id', 'search', 'water_leak')
+                 | selectattr('state', 'eq', 'on')
+                 | list | length %}
+              {% if active_count > 0 %}
+              ## **ACTIVE LEAKS: {{ active_count }}**
+              {% else %}
+              ## All Clear
+              {% endif %}
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: binary_sensor.garage_water_heater_moisture_sensor_water_leak
+                name: Garage Water Heater
+                show_state: true
+                state_display: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    return entity.state === 'on' ? 'LEAK!' : 'Dry';
+                  ]]]
+                icon: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
+                  ]]]
+                styles:
+                  card:
+                    - height: 100px
+                  icon:
+                    - width: 40px
+                    - color: |
+                        [[[
+                          if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 12px
+                  state:
+                    - font-size: 11px
+                tap_action:
+                  action: call-service
+                  service: script.leak_silence_sensor
+                  service_data:
+                    sensor: binary_sensor.garage_water_heater_moisture_sensor_water_leak
+                    duration: "[[[ return states['input_select.leak_silence_duration'].state ]]]"
+                  confirmation:
+                    text: Silence this sensor?
+              - type: custom:button-card
+                entity: binary_sensor.kitchen_dishwasher_moisture_sensor_water_leak
+                name: Kitchen Dishwasher
+                show_state: true
+                state_display: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    return entity.state === 'on' ? 'LEAK!' : 'Dry';
+                  ]]]
+                icon: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
+                  ]]]
+                styles:
+                  card:
+                    - height: 100px
+                  icon:
+                    - width: 40px
+                    - color: |
+                        [[[
+                          if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 12px
+                  state:
+                    - font-size: 11px
+                tap_action:
+                  action: call-service
+                  service: script.leak_silence_sensor
+                  service_data:
+                    sensor: binary_sensor.kitchen_dishwasher_moisture_sensor_water_leak
+                    duration: "[[[ return states['input_select.leak_silence_duration'].state ]]]"
+                  confirmation:
+                    text: Silence this sensor?
+              - type: custom:button-card
+                entity: binary_sensor.kitchen_refrigerator_moisture_sensor_water_leak
+                name: Kitchen Refrigerator
+                show_state: true
+                state_display: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    return entity.state === 'on' ? 'LEAK!' : 'Dry';
+                  ]]]
+                icon: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
+                  ]]]
+                styles:
+                  card:
+                    - height: 100px
+                  icon:
+                    - width: 40px
+                    - color: |
+                        [[[
+                          if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 12px
+                  state:
+                    - font-size: 11px
+                tap_action:
+                  action: call-service
+                  service: script.leak_silence_sensor
+                  service_data:
+                    sensor: binary_sensor.kitchen_refrigerator_moisture_sensor_water_leak
+                    duration: "[[[ return states['input_select.leak_silence_duration'].state ]]]"
+                  confirmation:
+                    text: Silence this sensor?
+              - type: custom:button-card
+                entity: binary_sensor.kitchen_sink_moisture_sensor_water_leak
+                name: Kitchen Sink
+                show_state: true
+                state_display: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    return entity.state === 'on' ? 'LEAK!' : 'Dry';
+                  ]]]
+                icon: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
+                  ]]]
+                styles:
+                  card:
+                    - height: 100px
+                  icon:
+                    - width: 40px
+                    - color: |
+                        [[[
+                          if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 12px
+                  state:
+                    - font-size: 11px
+                tap_action:
+                  action: call-service
+                  service: script.leak_silence_sensor
+                  service_data:
+                    sensor: binary_sensor.kitchen_sink_moisture_sensor_water_leak
+                    duration: "[[[ return states['input_select.leak_silence_duration'].state ]]]"
+                  confirmation:
+                    text: Silence this sensor?
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: binary_sensor.master_bathroom_moisture_sensor_water_leak
+                name: Master Bathroom
+                show_state: true
+                state_display: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    return entity.state === 'on' ? 'LEAK!' : 'Dry';
+                  ]]]
+                icon: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
+                  ]]]
+                styles:
+                  card:
+                    - height: 100px
+                  icon:
+                    - width: 40px
+                    - color: |
+                        [[[
+                          if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 12px
+                  state:
+                    - font-size: 11px
+                tap_action:
+                  action: call-service
+                  service: script.leak_silence_sensor
+                  service_data:
+                    sensor: binary_sensor.master_bathroom_moisture_sensor_water_leak
+                    duration: "[[[ return states['input_select.leak_silence_duration'].state ]]]"
+                  confirmation:
+                    text: Silence this sensor?
+              - type: custom:button-card
+                entity: binary_sensor.master_bedroom_vanity_moisture_sensor_water_leak
+                name: Master Vanity
+                show_state: true
+                state_display: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    return entity.state === 'on' ? 'LEAK!' : 'Dry';
+                  ]]]
+                icon: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
+                  ]]]
+                styles:
+                  card:
+                    - height: 100px
+                  icon:
+                    - width: 40px
+                    - color: |
+                        [[[
+                          if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 12px
+                  state:
+                    - font-size: 11px
+                tap_action:
+                  action: call-service
+                  service: script.leak_silence_sensor
+                  service_data:
+                    sensor: binary_sensor.master_bedroom_vanity_moisture_sensor_water_leak
+                    duration: "[[[ return states['input_select.leak_silence_duration'].state ]]]"
+                  confirmation:
+                    text: Silence this sensor?
+              - type: custom:button-card
+                entity: binary_sensor.upstairs_vanity_moisture_sensor_water_leak
+                name: Upstairs Vanity
+                show_state: true
+                state_display: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    return entity.state === 'on' ? 'LEAK!' : 'Dry';
+                  ]]]
+                icon: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
+                  ]]]
+                styles:
+                  card:
+                    - height: 100px
+                  icon:
+                    - width: 40px
+                    - color: |
+                        [[[
+                          if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 12px
+                  state:
+                    - font-size: 11px
+                tap_action:
+                  action: call-service
+                  service: script.leak_silence_sensor
+                  service_data:
+                    sensor: binary_sensor.upstairs_vanity_moisture_sensor_water_leak
+                    duration: "[[[ return states['input_select.leak_silence_duration'].state ]]]"
+                  confirmation:
+                    text: Silence this sensor?
+              - type: custom:button-card
+                entity: binary_sensor.upstairs_bathroom_moisture_sensor_water_leak
+                name: Upstairs Bathroom
+                show_state: true
+                state_display: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    return entity.state === 'on' ? 'LEAK!' : 'Dry';
+                  ]]]
+                icon: |
+                  [[[
+                    if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
+                  ]]]
+                styles:
+                  card:
+                    - height: 100px
+                  icon:
+                    - width: 40px
+                    - color: |
+                        [[[
+                          if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          return entity.state === 'on' ? '#ff0000' : '#4caf50';
+                        ]]]
+                  name:
+                    - font-size: 12px
+                  state:
+                    - font-size: 11px
+                tap_action:
+                  action: call-service
+                  service: script.leak_silence_sensor
+                  service_data:
+                    sensor: binary_sensor.upstairs_bathroom_moisture_sensor_water_leak
+                    duration: "[[[ return states['input_select.leak_silence_duration'].state ]]]"
+                  confirmation:
+                    text: Silence this sensor?
+          - type: entities
+            title: System Controls
+            show_header_toggle: false
+            entities:
+              - entity: input_boolean.disable_leak_alerts
+                name: Disable All Alerts
+                icon: mdi:bell-off
+              - entity: automation.leak_detection_alert
+                name: Leak Detection Automation
+                secondary_info: last-triggered
+              - entity: input_datetime.leak_last_notification
+                name: Last Alert Sent
+              - type: divider
+              - entity: input_select.leak_silence_duration
+                name: Default Silence Duration
+          - type: entities
+            title: Silence Timers
+            show_header_toggle: false
+            entities:
+              - entity: input_datetime.leak_silence_garage_water_heater
+                name: Garage Water Heater
+                icon: mdi:water-off
+                tap_action:
+                  action: call-service
+                  service: script.leak_clear_silence
+                  service_data:
+                    sensor: binary_sensor.garage_water_heater_moisture_sensor_water_leak
+                  confirmation:
+                    text: Clear silence for this sensor?
+              - entity: input_datetime.leak_silence_kitchen_dishwasher
+                name: Kitchen Dishwasher
+                icon: mdi:water-off
+                tap_action:
+                  action: call-service
+                  service: script.leak_clear_silence
+                  service_data:
+                    sensor: binary_sensor.kitchen_dishwasher_moisture_sensor_water_leak
+                  confirmation:
+                    text: Clear silence for this sensor?
+              - entity: input_datetime.leak_silence_kitchen_refrigerator
+                name: Kitchen Refrigerator
+                icon: mdi:water-off
+                tap_action:
+                  action: call-service
+                  service: script.leak_clear_silence
+                  service_data:
+                    sensor: binary_sensor.kitchen_refrigerator_moisture_sensor_water_leak
+                  confirmation:
+                    text: Clear silence for this sensor?
+              - entity: input_datetime.leak_silence_kitchen_sink
+                name: Kitchen Sink
+                icon: mdi:water-off
+                tap_action:
+                  action: call-service
+                  service: script.leak_clear_silence
+                  service_data:
+                    sensor: binary_sensor.kitchen_sink_moisture_sensor_water_leak
+                  confirmation:
+                    text: Clear silence for this sensor?
+              - entity: input_datetime.leak_silence_master_bathroom
+                name: Master Bathroom
+                icon: mdi:water-off
+                tap_action:
+                  action: call-service
+                  service: script.leak_clear_silence
+                  service_data:
+                    sensor: binary_sensor.master_bathroom_moisture_sensor_water_leak
+                  confirmation:
+                    text: Clear silence for this sensor?
+              - entity: input_datetime.leak_silence_master_bedroom_vanity
+                name: Master Bedroom Vanity
+                icon: mdi:water-off
+                tap_action:
+                  action: call-service
+                  service: script.leak_clear_silence
+                  service_data:
+                    sensor: binary_sensor.master_bedroom_vanity_moisture_sensor_water_leak
+                  confirmation:
+                    text: Clear silence for this sensor?
+              - entity: input_datetime.leak_silence_upstairs_vanity
+                name: Upstairs Vanity
+                icon: mdi:water-off
+                tap_action:
+                  action: call-service
+                  service: script.leak_clear_silence
+                  service_data:
+                    sensor: binary_sensor.upstairs_vanity_moisture_sensor_water_leak
+                  confirmation:
+                    text: Clear silence for this sensor?
+              - entity: input_datetime.leak_silence_upstairs_bathroom
+                name: Upstairs Bathroom
+                icon: mdi:water-off
+                tap_action:
+                  action: call-service
+                  service: script.leak_clear_silence
+                  service_data:
+                    sensor: binary_sensor.upstairs_bathroom_moisture_sensor_water_leak
+                  confirmation:
+                    text: Clear silence for this sensor?
+              - type: divider
+              - type: button
+                name: Clear All Silences
+                icon: mdi:bell-ring
+                tap_action:
+                  action: call-service
+                  service: script.leak_clear_all_silences
+                  confirmation:
+                    text: Clear all silence timers?
+          - type: history-graph
+            title: Leak History (7 days)
+            hours_to_show: 168
+            entities:
+              - entity: binary_sensor.garage_water_heater_moisture_sensor_water_leak
+                name: Garage
+              - entity: binary_sensor.kitchen_dishwasher_moisture_sensor_water_leak
+                name: Dishwasher
+              - entity: binary_sensor.kitchen_refrigerator_moisture_sensor_water_leak
+                name: Refrigerator
+              - entity: binary_sensor.kitchen_sink_moisture_sensor_water_leak
+                name: Kitchen Sink
+              - entity: binary_sensor.master_bathroom_moisture_sensor_water_leak
+                name: Master Bath
+              - entity: binary_sensor.master_bedroom_vanity_moisture_sensor_water_leak
+                name: Master Vanity
+              - entity: binary_sensor.upstairs_vanity_moisture_sensor_water_leak
+                name: Upstairs Vanity
+              - entity: binary_sensor.upstairs_bathroom_moisture_sensor_water_leak
+                name: Upstairs Bath
   - type: sections
     title: Entry & Security
     path: entry-security

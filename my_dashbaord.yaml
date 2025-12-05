@@ -1982,7 +1982,7 @@ views:
             display_type: full
           - type: custom:flower-card
             entity: plant.dracaena_fragrans_massangeana
-            battery_sensor: sensor.dracaena_fragrans_battery
+            battery_sensor: sensor.dracaena_fragrans_living_room_battery
             show_bars:
               - moisture
               - temperature
@@ -1993,7 +1993,7 @@ views:
             display_type: full
           - type: custom:flower-card
             entity: plant.aspidistra_elatior
-            battery_sensor: sensor.dracaena_fragrans_battery
+            battery_sensor: sensor.aspidistra_elatior_battery
             show_bars:
               - moisture
               - temperature
@@ -2004,7 +2004,7 @@ views:
             display_type: full
           - type: custom:flower-card
             entity: plant.dracaena_fragrans
-            battery_sensor: sensor.dracaena_fragrans_battery
+            battery_sensor: sensor.dracaena_fragrans_front_door_battery
             show_bars:
               - moisture
               - temperature
@@ -2015,7 +2015,7 @@ views:
             display_type: full
           - type: custom:flower-card
             entity: plant.schefflera_arboricola
-            battery_sensor: sensor.dracaena_fragrans_battery
+            battery_sensor: sensor.schefflera_arboricola_battery
             show_bars:
               - moisture
               - temperature
@@ -2143,14 +2143,26 @@ views:
                 entity: binary_sensor.garage_water_heater_moisture_sensor_water_leak
                 name: Garage Water Heater
                 show_state: true
+                variables:
+                  silence_entity: input_datetime.leak_silence_garage_water_heater
                 state_display: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'SILENCED';
+                    }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
                 icon: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'mdi:bell-sleep';
+                    }
                     return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
                   ]]]
                 styles:
@@ -2161,6 +2173,11 @@ views:
                     - color: |
                         [[[
                           if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          const silenceState = states[variables.silence_entity]?.state;
+                          if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                            const silenceTime = new Date(silenceState);
+                            if (silenceTime > new Date()) return '#9e9e9e';
+                          }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
                   name:
@@ -2179,14 +2196,26 @@ views:
                 entity: binary_sensor.kitchen_dishwasher_moisture_sensor_water_leak
                 name: Kitchen Dishwasher
                 show_state: true
+                variables:
+                  silence_entity: input_datetime.leak_silence_kitchen_dishwasher
                 state_display: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'SILENCED';
+                    }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
                 icon: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'mdi:bell-sleep';
+                    }
                     return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
                   ]]]
                 styles:
@@ -2197,6 +2226,11 @@ views:
                     - color: |
                         [[[
                           if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          const silenceState = states[variables.silence_entity]?.state;
+                          if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                            const silenceTime = new Date(silenceState);
+                            if (silenceTime > new Date()) return '#9e9e9e';
+                          }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
                   name:
@@ -2215,14 +2249,26 @@ views:
                 entity: binary_sensor.kitchen_refrigerator_moisture_sensor_water_leak
                 name: Kitchen Refrigerator
                 show_state: true
+                variables:
+                  silence_entity: input_datetime.leak_silence_kitchen_refrigerator
                 state_display: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'SILENCED';
+                    }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
                 icon: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'mdi:bell-sleep';
+                    }
                     return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
                   ]]]
                 styles:
@@ -2233,6 +2279,11 @@ views:
                     - color: |
                         [[[
                           if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          const silenceState = states[variables.silence_entity]?.state;
+                          if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                            const silenceTime = new Date(silenceState);
+                            if (silenceTime > new Date()) return '#9e9e9e';
+                          }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
                   name:
@@ -2251,14 +2302,26 @@ views:
                 entity: binary_sensor.kitchen_sink_moisture_sensor_water_leak
                 name: Kitchen Sink
                 show_state: true
+                variables:
+                  silence_entity: input_datetime.leak_silence_kitchen_sink
                 state_display: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'SILENCED';
+                    }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
                 icon: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'mdi:bell-sleep';
+                    }
                     return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
                   ]]]
                 styles:
@@ -2269,6 +2332,11 @@ views:
                     - color: |
                         [[[
                           if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          const silenceState = states[variables.silence_entity]?.state;
+                          if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                            const silenceTime = new Date(silenceState);
+                            if (silenceTime > new Date()) return '#9e9e9e';
+                          }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
                   name:
@@ -2289,14 +2357,26 @@ views:
                 entity: binary_sensor.master_bathroom_moisture_sensor_water_leak
                 name: Master Bathroom
                 show_state: true
+                variables:
+                  silence_entity: input_datetime.leak_silence_master_bathroom
                 state_display: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'SILENCED';
+                    }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
                 icon: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'mdi:bell-sleep';
+                    }
                     return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
                   ]]]
                 styles:
@@ -2307,6 +2387,11 @@ views:
                     - color: |
                         [[[
                           if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          const silenceState = states[variables.silence_entity]?.state;
+                          if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                            const silenceTime = new Date(silenceState);
+                            if (silenceTime > new Date()) return '#9e9e9e';
+                          }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
                   name:
@@ -2325,14 +2410,26 @@ views:
                 entity: binary_sensor.master_bedroom_vanity_moisture_sensor_water_leak
                 name: Master Vanity
                 show_state: true
+                variables:
+                  silence_entity: input_datetime.leak_silence_master_bedroom_vanity
                 state_display: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'SILENCED';
+                    }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
                 icon: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'mdi:bell-sleep';
+                    }
                     return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
                   ]]]
                 styles:
@@ -2343,6 +2440,11 @@ views:
                     - color: |
                         [[[
                           if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          const silenceState = states[variables.silence_entity]?.state;
+                          if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                            const silenceTime = new Date(silenceState);
+                            if (silenceTime > new Date()) return '#9e9e9e';
+                          }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
                   name:
@@ -2361,14 +2463,26 @@ views:
                 entity: binary_sensor.upstairs_vanity_moisture_sensor_water_leak
                 name: Upstairs Vanity
                 show_state: true
+                variables:
+                  silence_entity: input_datetime.leak_silence_upstairs_vanity
                 state_display: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'SILENCED';
+                    }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
                 icon: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'mdi:bell-sleep';
+                    }
                     return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
                   ]]]
                 styles:
@@ -2379,6 +2493,11 @@ views:
                     - color: |
                         [[[
                           if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          const silenceState = states[variables.silence_entity]?.state;
+                          if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                            const silenceTime = new Date(silenceState);
+                            if (silenceTime > new Date()) return '#9e9e9e';
+                          }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
                   name:
@@ -2397,14 +2516,26 @@ views:
                 entity: binary_sensor.upstairs_bathroom_moisture_sensor_water_leak
                 name: Upstairs Bathroom
                 show_state: true
+                variables:
+                  silence_entity: input_datetime.leak_silence_upstairs_bathroom
                 state_display: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'OFFLINE';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'SILENCED';
+                    }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
                 icon: |
                   [[[
                     if (entity.state === 'unavailable' || entity.state === 'unknown') return 'mdi:water-off';
+                    const silenceState = states[variables.silence_entity]?.state;
+                    if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                      const silenceTime = new Date(silenceState);
+                      if (silenceTime > new Date()) return 'mdi:bell-sleep';
+                    }
                     return entity.state === 'on' ? 'mdi:water-alert' : 'mdi:water-check';
                   ]]]
                 styles:
@@ -2415,6 +2546,11 @@ views:
                     - color: |
                         [[[
                           if (entity.state === 'unavailable' || entity.state === 'unknown') return '#ff9800';
+                          const silenceState = states[variables.silence_entity]?.state;
+                          if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
+                            const silenceTime = new Date(silenceState);
+                            if (silenceTime > new Date()) return '#9e9e9e';
+                          }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
                   name:

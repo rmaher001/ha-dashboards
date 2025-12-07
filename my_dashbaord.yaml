@@ -803,55 +803,59 @@ views:
         cards:
           - type: heading
             heading: Monitoring
-          - type: custom:fold-entity-row
-            head:
-              type: section
-              label: Monitoring
-            padding: 5
+          - type: entities
+            show_header_toggle: false
+            state_color: true
             entities:
-              - entity: binary_sensor.master_bedroom_vanity_moisture_sensor_water_leak
-                name: Vanity Moisture
-                secondary_info: last-changed
-                icon: mdi:water-alert
-              - entity: binary_sensor.everything_presence_lite_5cd9e4_zone_1_occupancy
-                name: Chair Occupancy
-                secondary_info: last-changed
-                icon: mdi:seat
-              - entity: binary_sensor.master_bedroom_presence_sensors
-                name: Bedroom Presence
-                secondary_info: last-changed
-                icon: mdi:eye
-              - entity: sensor.master_bathroom_derivative_humidity
-                name: Derivative Humidity
-                secondary_info: last-changed
-              - entity: binary_sensor.master_bathroom_humidity_target
-                name: Humidity Target
-                secondary_info: last-changed
-              - entity: sensor.master_bathroom_temp_humidity_2_humidity
-                name: Bathroom Humidity
-                secondary_info: last-changed
-              - entity: climate.home_downstairs
-                name: Downstairs Target Humidity
-                secondary_info: last-changed
-              - entity: timer.master_bathroom_fan_timer
-                name: Fan Timer
-                secondary_info: last-changed
-                icon: mdi:timer
-              - entity: timer.master_bathroom_lights_timer
-                name: Lights Timer
-                secondary_info: last-changed
-                icon: mdi:timer-outline
-              - entity: binary_sensor.master_bathroom_moisture_sensor_water_leak
-                name: Bathroom Moisture
-                secondary_info: last-changed
-                icon: mdi:water-alert
-              - entity: binary_sensor.master_bathroom_motion_sensors
-                name: Bathroom Presence
-                secondary_info: last-changed
-                icon: mdi:eye
-              - entity: remote.tv
-                name: TV Remote
-                secondary_info: last-changed
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: Monitoring
+                padding: 5
+                entities:
+                  - entity: binary_sensor.master_bedroom_vanity_moisture_sensor_water_leak
+                    name: Vanity Moisture
+                    secondary_info: last-changed
+                    icon: mdi:water-alert
+                  - entity: binary_sensor.everything_presence_lite_5cd9e4_zone_1_occupancy
+                    name: Chair Occupancy
+                    secondary_info: last-changed
+                    icon: mdi:seat
+                  - entity: binary_sensor.master_bedroom_presence_sensors
+                    name: Bedroom Presence
+                    secondary_info: last-changed
+                    icon: mdi:eye
+                  - entity: sensor.master_bathroom_derivative_humidity
+                    name: Derivative Humidity
+                    secondary_info: last-changed
+                  - entity: binary_sensor.master_bathroom_humidity_target
+                    name: Humidity Target
+                    secondary_info: last-changed
+                  - entity: sensor.master_bathroom_temp_humidity_2_humidity
+                    name: Bathroom Humidity
+                    secondary_info: last-changed
+                  - entity: climate.home_downstairs
+                    name: Downstairs Target Humidity
+                    secondary_info: last-changed
+                  - entity: timer.master_bathroom_fan_timer
+                    name: Fan Timer
+                    secondary_info: last-changed
+                    icon: mdi:timer
+                  - entity: timer.master_bathroom_lights_timer
+                    name: Lights Timer
+                    secondary_info: last-changed
+                    icon: mdi:timer-outline
+                  - entity: binary_sensor.master_bathroom_moisture_sensor_water_leak
+                    name: Bathroom Moisture
+                    secondary_info: last-changed
+                    icon: mdi:water-alert
+                  - entity: binary_sensor.master_bathroom_motion_sensors
+                    name: Bathroom Presence
+                    secondary_info: last-changed
+                    icon: mdi:eye
+                  - entity: remote.tv
+                    name: TV Remote
+                    secondary_info: last-changed
   - type: sections
     title: Dima's Bedroom
     path: dima-bedroom
@@ -924,20 +928,24 @@ views:
         cards:
           - type: heading
             heading: Monitoring
-          - type: custom:fold-entity-row
-            head:
-              type: section
-              label: Monitoring
-            padding: 5
+          - type: entities
+            show_header_toggle: false
+            state_color: true
             entities:
-              - entity: binary_sensor.dima_bedroom_presence_radar_target
-                name: Presence
-                secondary_info: last-changed
-                icon: mdi:eye
-              - entity: timer.dima_bedroom_lights_timer
-                name: Lights Timer
-                secondary_info: last-changed
-                icon: mdi:timer
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: Monitoring
+                padding: 5
+                entities:
+                  - entity: binary_sensor.dima_bedroom_presence_radar_target
+                    name: Presence
+                    secondary_info: last-changed
+                    icon: mdi:eye
+                  - entity: timer.dima_bedroom_lights_timer
+                    name: Lights Timer
+                    secondary_info: last-changed
+                    icon: mdi:timer
   - type: sections
     title: Zoe's Bedroom
     path: zoe-bedroom
@@ -1053,20 +1061,24 @@ views:
         cards:
           - type: heading
             heading: Monitoring
-          - type: custom:fold-entity-row
-            head:
-              type: section
-              label: Monitoring
-            padding: 5
+          - type: entities
+            show_header_toggle: false
+            state_color: true
             entities:
-              - entity: binary_sensor.zoe_bedroom_presence_sensors
-                name: Presence
-                secondary_info: last-changed
-                icon: mdi:eye
-              - entity: timer.zoe_bedroom_lights_timer
-                name: Lights Timer
-                secondary_info: last-changed
-                icon: mdi:timer
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: Monitoring
+                padding: 5
+                entities:
+                  - entity: binary_sensor.zoe_bedroom_presence_sensors
+                    name: Presence
+                    secondary_info: last-changed
+                    icon: mdi:eye
+                  - entity: timer.zoe_bedroom_lights_timer
+                    name: Lights Timer
+                    secondary_info: last-changed
+                    icon: mdi:timer
   - type: sections
     title: Upstairs Bathroom
     path: upstairs-bathroom
@@ -1179,52 +1191,56 @@ views:
         cards:
           - type: heading
             heading: Monitoring
-          - type: custom:fold-entity-row
-            head:
-              type: section
-              label: Monitoring
-            padding: 5
+          - type: entities
+            show_header_toggle: false
+            state_color: true
             entities:
-              - entity: binary_sensor.upstairs_bathroom_humidity_target
-                name: Humidity Target
-                secondary_info: last-changed
-              - entity: sensor.upstairs_bathroom_temp_humidity_2_humidity
-                name: Bathroom Humidity
-                secondary_info: last-changed
-              - entity: climate.home_upstairs
-                name: Upstairs Target Humidity
-                secondary_info: last-changed
-              - entity: sensor.upstairs_bathroom_derivative_humidity
-                name: Derivative Humidity
-                secondary_info: last-changed
-              - entity: binary_sensor.upstairs_bathroom_motion_sensors
-                name: Bathroom Presence
-                secondary_info: last-changed
-                icon: mdi:eye
-              - entity: timer.upstairs_bathroom_fan_timer
-                name: Fan Timer
-                secondary_info: last-changed
-                icon: mdi:timer
-              - entity: binary_sensor.upstairs_bathroom_moisture_sensor_water_leak
-                name: Bathroom Moisture
-                secondary_info: last-changed
-                icon: mdi:water-alert
-              - entity: binary_sensor.upstairs_vanity_motion_occupancy
-                name: Vanity Presence
-                secondary_info: last-changed
-                icon: mdi:eye
-              - entity: binary_sensor.upstairs_vanity_moisture_sensor_water_leak
-                name: Vanity Moisture
-                secondary_info: last-changed
-                icon: mdi:water-alert
-              - entity: binary_sensor.upstairs_vanity_night_light_occupancy
-                name: Vanity Night Light Motion
-                secondary_info: last-changed
-                icon: mdi:motion-sensor
-              - entity: sensor.upstairs_vanity_night_light_illuminance
-                name: Vanity Night Light Luminance
-                secondary_info: last-changed
-                icon: mdi:brightness-6
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: Monitoring
+                padding: 5
+                entities:
+                  - entity: binary_sensor.upstairs_bathroom_humidity_target
+                    name: Humidity Target
+                    secondary_info: last-changed
+                  - entity: sensor.upstairs_bathroom_temp_humidity_2_humidity
+                    name: Bathroom Humidity
+                    secondary_info: last-changed
+                  - entity: climate.home_upstairs
+                    name: Upstairs Target Humidity
+                    secondary_info: last-changed
+                  - entity: sensor.upstairs_bathroom_derivative_humidity
+                    name: Derivative Humidity
+                    secondary_info: last-changed
+                  - entity: binary_sensor.upstairs_bathroom_motion_sensors
+                    name: Bathroom Presence
+                    secondary_info: last-changed
+                    icon: mdi:eye
+                  - entity: timer.upstairs_bathroom_fan_timer
+                    name: Fan Timer
+                    secondary_info: last-changed
+                    icon: mdi:timer
+                  - entity: binary_sensor.upstairs_bathroom_moisture_sensor_water_leak
+                    name: Bathroom Moisture
+                    secondary_info: last-changed
+                    icon: mdi:water-alert
+                  - entity: binary_sensor.upstairs_vanity_motion_occupancy
+                    name: Vanity Presence
+                    secondary_info: last-changed
+                    icon: mdi:eye
+                  - entity: binary_sensor.upstairs_vanity_moisture_sensor_water_leak
+                    name: Vanity Moisture
+                    secondary_info: last-changed
+                    icon: mdi:water-alert
+                  - entity: binary_sensor.upstairs_vanity_night_light_occupancy
+                    name: Vanity Night Light Motion
+                    secondary_info: last-changed
+                    icon: mdi:motion-sensor
+                  - entity: sensor.upstairs_vanity_night_light_illuminance
+                    name: Vanity Night Light Luminance
+                    secondary_info: last-changed
+                    icon: mdi:brightness-6
   - type: sections
     title: Garage
     path: garage
@@ -1372,25 +1388,29 @@ views:
         cards:
           - type: heading
             heading: Monitoring
-          - type: custom:fold-entity-row
-            head:
-              type: section
-              label: Monitoring
-            padding: 5
+          - type: entities
+            show_header_toggle: false
+            state_color: true
             entities:
-              - entity: binary_sensor.group_garage_door_opener_motion
-                name: Opener Motion
-                secondary_info: last-changed
-                icon: mdi:motion-sensor
-              - entity: >-
-                  binary_sensor.garage_camera_smart_occupancy_sensor_occupancysensor
-                name: Smart Occupancy
-                secondary_info: last-changed
-                icon: mdi:eye
-              - entity: binary_sensor.garage_water_heater_moisture_sensor_water_leak
-                name: Water Heater Moisture
-                secondary_info: last-changed
-                icon: mdi:water-alert
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: Monitoring
+                padding: 5
+                entities:
+                  - entity: binary_sensor.group_garage_door_opener_motion
+                    name: Opener Motion
+                    secondary_info: last-changed
+                    icon: mdi:motion-sensor
+                  - entity: >-
+                      binary_sensor.garage_camera_smart_occupancy_sensor_occupancysensor
+                    name: Smart Occupancy
+                    secondary_info: last-changed
+                    icon: mdi:eye
+                  - entity: binary_sensor.garage_water_heater_moisture_sensor_water_leak
+                    name: Water Heater Moisture
+                    secondary_info: last-changed
+                    icon: mdi:water-alert
   - type: sections
     title: Patio & Entrance
     path: patio-entrance
@@ -1575,23 +1595,27 @@ views:
         cards:
           - type: heading
             heading: Monitoring
-          - type: custom:fold-entity-row
-            head:
-              type: section
-              label: Monitoring
-            padding: 5
+          - type: entities
+            show_header_toggle: false
+            state_color: true
             entities:
-              - entity: binary_sensor.front_door_lock_low_battery_level
-                name: Lock Low Battery
-                secondary_info: last-changed
-                icon: mdi:battery-alert
-              - entity: sensor.front_door_lock_battery_level
-                name: Lock Battery Level
-                secondary_info: last-changed
-                icon: mdi:battery
-              - entity: sensor.doorbell_cpu_usage
-                secondary_info: last-changed
-                icon: mdi:chip
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: Monitoring
+                padding: 5
+                entities:
+                  - entity: binary_sensor.front_door_lock_low_battery_level
+                    name: Lock Low Battery
+                    secondary_info: last-changed
+                    icon: mdi:battery-alert
+                  - entity: sensor.front_door_lock_battery_level
+                    name: Lock Battery Level
+                    secondary_info: last-changed
+                    icon: mdi:battery
+                  - entity: sensor.doorbell_cpu_usage
+                    secondary_info: last-changed
+                    icon: mdi:chip
   - type: sections
     max_columns: 2
     title: Climate Control

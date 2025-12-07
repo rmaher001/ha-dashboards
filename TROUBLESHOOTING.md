@@ -40,7 +40,8 @@ TypeError: Cannot read properties of undefined (reading 'has')
 
 ### Post-Fix Work
 
-- Replaced stack-in-card usage at lines 1824 and 1905 (Fridge/Freezer cards) with native alternatives
+- Replaced stack-in-card usage (Fridge/Freezer cards) with native `horizontal-stack`
+- Removed card_mod styling (card-mod was removed)
 
 ### Lessons Learned
 

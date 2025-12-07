@@ -1821,16 +1821,7 @@ views:
                       icon: mdi:air-filter
       - type: grid
         cards:
-          - type: custom:stack-in-card
-            mode: horizontal
-            card_mod:
-              style: |
-                ha-card {
-                  height: 210px;
-                  background-color: rgb(35,35,35);
-                  padding-top: 35px;
-                  box-sizing: border-box;
-                }
+          - type: horizontal-stack
             cards:
               - type: custom:button-card
                 entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
@@ -1874,13 +1865,6 @@ views:
                     color: '#4caf50'
                   - from: 42
                     color: '#ff0000'
-                card_mod:
-                  style: |
-                    ha-card {
-                      background: transparent !important;
-                      box-shadow: none !important;
-                      border: none !important;
-                    }
               - type: gauge
                 entity: sensor.kitchen_fridge_temp_humidity_humidity
                 name: ' '
@@ -1895,23 +1879,7 @@ views:
                     color: '#4caf50'
                   - from: 70
                     color: '#ff0000'
-                card_mod:
-                  style: |
-                    ha-card {
-                      background: transparent !important;
-                      box-shadow: none !important;
-                      border: none !important;
-                    }
-          - type: custom:stack-in-card
-            mode: horizontal
-            card_mod:
-              style: |
-                ha-card {
-                  height: 210px;
-                  background-color: rgb(35,35,35);
-                  padding-top: 35px;
-                  box-sizing: border-box;
-                }
+          - type: horizontal-stack
             cards:
               - type: custom:button-card
                 entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
@@ -1955,13 +1923,6 @@ views:
                     color: '#4caf50'
                   - from: 10
                     color: '#ff0000'
-                card_mod:
-                  style: |
-                    ha-card {
-                      background: transparent !important;
-                      box-shadow: none !important;
-                      border: none !important;
-                    }
               - type: gauge
                 entity: sensor.kitchen_freezer_temp_humidity_humidity
                 name: ' '
@@ -1976,13 +1937,6 @@ views:
                     color: '#4caf50'
                   - from: 70
                     color: '#ff0000'
-                card_mod:
-                  style: |
-                    ha-card {
-                      background: transparent !important;
-                      box-shadow: none !important;
-                      border: none !important;
-                    }
   - type: sections
     title: Plants
     path: plants

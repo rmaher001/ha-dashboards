@@ -1821,7 +1821,8 @@ views:
                       icon: mdi:air-filter
       - type: grid
         cards:
-          - type: horizontal-stack
+          - type: custom:stack-in-card
+            mode: horizontal
             cards:
               - type: custom:button-card
                 entity: binary_sensor.kitchen_fridge_door_contact_sensor_intrusion
@@ -1835,9 +1836,8 @@ views:
                 show_name: true
                 styles:
                   card:
-                    - background: transparent
-                    - border: none
-                    - box-shadow: none
+                    - background: var(--ha-card-background, var(--card-background-color, #1c1c1c))
+                    - border-radius: var(--ha-card-border-radius, 12px)
                   icon:
                     - width: 100px
                     - height: 100px
@@ -1879,7 +1879,8 @@ views:
                     color: '#4caf50'
                   - from: 70
                     color: '#ff0000'
-          - type: horizontal-stack
+          - type: custom:stack-in-card
+            mode: horizontal
             cards:
               - type: custom:button-card
                 entity: binary_sensor.kitchen_freezer_door_contact_sensor_intrusion
@@ -1893,9 +1894,8 @@ views:
                 show_name: true
                 styles:
                   card:
-                    - background: transparent
-                    - border: none
-                    - box-shadow: none
+                    - background: var(--ha-card-background, var(--card-background-color, #1c1c1c))
+                    - border-radius: var(--ha-card-border-radius, 12px)
                   icon:
                     - width: 100px
                     - height: 100px

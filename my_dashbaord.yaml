@@ -2091,8 +2091,8 @@ views:
                 name: Last Alert Sent
                 icon: mdi:message-alert
 
-              - entity: input_datetime.water_softener_last_regeneration
-                name: Last Regeneration
+              - entity: binary_sensor.water_softener_regeneration_cycle_active
+                name: Regeneration Active
                 icon: mdi:water-sync
       - type: grid
         cards:

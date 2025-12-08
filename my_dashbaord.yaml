@@ -2087,19 +2087,13 @@ views:
                 name: Firmware Version
                 icon: mdi:chip
 
-              - type: custom:template-entity-row
-                entity: input_datetime.water_softener_last_notification
+              - entity: input_datetime.water_softener_last_notification
                 name: Last Alert Sent
                 icon: mdi:message-alert
-                state: >-
-                  {{ as_timestamp(states('input_datetime.water_softener_last_notification')) | timestamp_custom('%b %d, %Y %-I:%M %p') }}
 
-              - type: custom:template-entity-row
-                entity: input_datetime.water_softener_last_regeneration
+              - entity: input_datetime.water_softener_last_regeneration
                 name: Last Regeneration
                 icon: mdi:water-sync
-                state: >-
-                  {{ as_timestamp(states('input_datetime.water_softener_last_regeneration')) | timestamp_custom('%b %d, %Y %-I:%M %p') }}
       - type: grid
         cards:
           - type: heading

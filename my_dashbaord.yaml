@@ -2129,7 +2129,9 @@ views:
                     const silenceState = states[variables.silence_entity]?.state;
                     if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                       const silenceTime = new Date(silenceState);
-                      if (silenceTime > new Date()) return 'SILENCED';
+                      if (silenceTime > new Date()) {
+                        return entity.state === 'on' ? 'SILENCED (Wet)' : 'SILENCED (Dry)';
+                      }
                     }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
@@ -2154,7 +2156,9 @@ views:
                           const silenceState = states[variables.silence_entity]?.state;
                           if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                             const silenceTime = new Date(silenceState);
-                            if (silenceTime > new Date()) return '#9e9e9e';
+                            if (silenceTime > new Date()) {
+                              return entity.state === 'on' ? '#ff9800' : '#9e9e9e';
+                            }
                           }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
@@ -2182,7 +2186,9 @@ views:
                     const silenceState = states[variables.silence_entity]?.state;
                     if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                       const silenceTime = new Date(silenceState);
-                      if (silenceTime > new Date()) return 'SILENCED';
+                      if (silenceTime > new Date()) {
+                        return entity.state === 'on' ? 'SILENCED (Wet)' : 'SILENCED (Dry)';
+                      }
                     }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
@@ -2207,7 +2213,9 @@ views:
                           const silenceState = states[variables.silence_entity]?.state;
                           if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                             const silenceTime = new Date(silenceState);
-                            if (silenceTime > new Date()) return '#9e9e9e';
+                            if (silenceTime > new Date()) {
+                              return entity.state === 'on' ? '#ff9800' : '#9e9e9e';
+                            }
                           }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
@@ -2235,7 +2243,9 @@ views:
                     const silenceState = states[variables.silence_entity]?.state;
                     if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                       const silenceTime = new Date(silenceState);
-                      if (silenceTime > new Date()) return 'SILENCED';
+                      if (silenceTime > new Date()) {
+                        return entity.state === 'on' ? 'SILENCED (Wet)' : 'SILENCED (Dry)';
+                      }
                     }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
@@ -2260,7 +2270,9 @@ views:
                           const silenceState = states[variables.silence_entity]?.state;
                           if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                             const silenceTime = new Date(silenceState);
-                            if (silenceTime > new Date()) return '#9e9e9e';
+                            if (silenceTime > new Date()) {
+                              return entity.state === 'on' ? '#ff9800' : '#9e9e9e';
+                            }
                           }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
@@ -2288,7 +2300,9 @@ views:
                     const silenceState = states[variables.silence_entity]?.state;
                     if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                       const silenceTime = new Date(silenceState);
-                      if (silenceTime > new Date()) return 'SILENCED';
+                      if (silenceTime > new Date()) {
+                        return entity.state === 'on' ? 'SILENCED (Wet)' : 'SILENCED (Dry)';
+                      }
                     }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
@@ -2313,7 +2327,9 @@ views:
                           const silenceState = states[variables.silence_entity]?.state;
                           if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                             const silenceTime = new Date(silenceState);
-                            if (silenceTime > new Date()) return '#9e9e9e';
+                            if (silenceTime > new Date()) {
+                              return entity.state === 'on' ? '#ff9800' : '#9e9e9e';
+                            }
                           }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
@@ -2343,7 +2359,9 @@ views:
                     const silenceState = states[variables.silence_entity]?.state;
                     if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                       const silenceTime = new Date(silenceState);
-                      if (silenceTime > new Date()) return 'SILENCED';
+                      if (silenceTime > new Date()) {
+                        return entity.state === 'on' ? 'SILENCED (Wet)' : 'SILENCED (Dry)';
+                      }
                     }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
@@ -2368,7 +2386,9 @@ views:
                           const silenceState = states[variables.silence_entity]?.state;
                           if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                             const silenceTime = new Date(silenceState);
-                            if (silenceTime > new Date()) return '#9e9e9e';
+                            if (silenceTime > new Date()) {
+                              return entity.state === 'on' ? '#ff9800' : '#9e9e9e';
+                            }
                           }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
@@ -2396,7 +2416,9 @@ views:
                     const silenceState = states[variables.silence_entity]?.state;
                     if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                       const silenceTime = new Date(silenceState);
-                      if (silenceTime > new Date()) return 'SILENCED';
+                      if (silenceTime > new Date()) {
+                        return entity.state === 'on' ? 'SILENCED (Wet)' : 'SILENCED (Dry)';
+                      }
                     }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
@@ -2421,7 +2443,9 @@ views:
                           const silenceState = states[variables.silence_entity]?.state;
                           if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                             const silenceTime = new Date(silenceState);
-                            if (silenceTime > new Date()) return '#9e9e9e';
+                            if (silenceTime > new Date()) {
+                              return entity.state === 'on' ? '#ff9800' : '#9e9e9e';
+                            }
                           }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
@@ -2449,7 +2473,9 @@ views:
                     const silenceState = states[variables.silence_entity]?.state;
                     if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                       const silenceTime = new Date(silenceState);
-                      if (silenceTime > new Date()) return 'SILENCED';
+                      if (silenceTime > new Date()) {
+                        return entity.state === 'on' ? 'SILENCED (Wet)' : 'SILENCED (Dry)';
+                      }
                     }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
@@ -2474,7 +2500,9 @@ views:
                           const silenceState = states[variables.silence_entity]?.state;
                           if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                             const silenceTime = new Date(silenceState);
-                            if (silenceTime > new Date()) return '#9e9e9e';
+                            if (silenceTime > new Date()) {
+                              return entity.state === 'on' ? '#ff9800' : '#9e9e9e';
+                            }
                           }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]
@@ -2502,7 +2530,9 @@ views:
                     const silenceState = states[variables.silence_entity]?.state;
                     if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                       const silenceTime = new Date(silenceState);
-                      if (silenceTime > new Date()) return 'SILENCED';
+                      if (silenceTime > new Date()) {
+                        return entity.state === 'on' ? 'SILENCED (Wet)' : 'SILENCED (Dry)';
+                      }
                     }
                     return entity.state === 'on' ? 'LEAK!' : 'Dry';
                   ]]]
@@ -2527,7 +2557,9 @@ views:
                           const silenceState = states[variables.silence_entity]?.state;
                           if (silenceState && silenceState !== 'unknown' && silenceState !== 'unavailable') {
                             const silenceTime = new Date(silenceState);
-                            if (silenceTime > new Date()) return '#9e9e9e';
+                            if (silenceTime > new Date()) {
+                              return entity.state === 'on' ? '#ff9800' : '#9e9e9e';
+                            }
                           }
                           return entity.state === 'on' ? '#ff0000' : '#4caf50';
                         ]]]

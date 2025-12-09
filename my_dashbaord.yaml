@@ -1616,6 +1616,22 @@ views:
                   - entity: sensor.doorbell_cpu_usage
                     secondary_info: last-changed
                     icon: mdi:chip
+                  - entity: light.front_full_camera_illuminator
+                    name: Front Full Camera Illuminator
+                    secondary_info: last-changed
+                    icon: mdi:lightbulb-on
+                  - entity: light.sidewalk_street_camera_illuminator
+                    name: Sidewalk Street Camera Illuminator
+                    secondary_info: last-changed
+                    icon: mdi:lightbulb-on
+                  - entity: light.patio_camera_floodlight_timed
+                    name: Patio Camera Illuminator
+                    secondary_info: last-changed
+                    icon: mdi:spotlight-beam
+                  - entity: light.front_side_camera_floodlight_timed
+                    name: Front Side Camera Illuminator
+                    secondary_info: last-changed
+                    icon: mdi:spotlight-beam
   - type: sections
     max_columns: 2
     title: Climate Control
